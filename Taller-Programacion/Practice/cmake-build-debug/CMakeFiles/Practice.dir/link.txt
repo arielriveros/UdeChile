@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Practice.dir/watermelon.cpp.o  -o Practice 
