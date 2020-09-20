@@ -25,9 +25,10 @@ ex
 int main(){
 
 	// inputs
-	int n, m;
-	int piles[n];
-	int jworms[m];
+	int n;
+	int m;
+	int* piles = new int[n];
+	int* jworms = new int[m];
 	std::cin >> n;
 	for (int i = 0; i < n; ++i){std::cin >> piles[i]; }
 	std::cin >> m;
