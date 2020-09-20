@@ -1,5 +1,10 @@
 #include <iostream>
+#include <time.h>
+#include <ctime>
+
 using namespace std;
+
+clock_t start, endd;
 
 /*
 input
@@ -54,7 +59,6 @@ void wormsBS(int juicy, int floor, int roof, int* labels) {
 	}
 }
 
-
 void wormsMain() {
 
 	// inits
@@ -96,8 +100,67 @@ Nobody leaves the taken seat during the whole process.
 */
 
 
+void benchMain() {
+
+	// inits
+	int n = 0, m = 0, kmax = 0;
+		float kmin = 0;
+	
+	// input
+	cin >> n;
+	cin >> m;
+
+	int* benches = new int[n+1];
+
+	for (int i = 0; i < n; i++) {
+		cin >> benches[i];
+		kmin += benches[i];
+		if (benches[i] >= kmax) {
+			kmax = benches[i];
+		}
+	}
+
+	kmin = ceil((kmin+m)/n);
+
+	cout << kmin << " " << kmax + m << endl; // min & max k
+
+}
+
+/*
+#include <iostream>
+using namespace std;
+
 int main() {
 
-	wormsMain();
+	// inits
+	int n = 0, m = 0, kmax = 0;
+		float kmin = 0;
+
+	// input
+	cin >> n;
+	cin >> m;
+
+	int* benches = new int[n+1];
+
+	for (int i = 0; i < n; i++) {
+		cin >> benches[i];
+		kmin += benches[i];
+		if (benches[i] >= kmax) {
+			kmax = benches[i];
+		}
+	}
+
+	kmin = ceil((kmin+m)/n);
+
+	cout << kmin << " " << kmax + m << endl;
+		return 0;
+
+}
+
+*/
+
+
+int main() {
+	benchMain();
 	return 0;
 }
