@@ -100,37 +100,7 @@ Nobody leaves the taken seat during the whole process.
 */
 
 
-void benchMain() {
-
-	// inits
-	int n = 0, m = 0, kmax = 0;
-		float kmin = 0;
-	
-	// input
-	cin >> n;
-	cin >> m;
-
-	int* benches = new int[n+1];
-
-	for (int i = 0; i < n; i++) {
-		cin >> benches[i];
-		kmin += benches[i];
-		if (benches[i] >= kmax) {
-			kmax = benches[i];
-		}
-	}
-
-	kmin = ceil((kmin+m)/n);
-
-	cout << kmin << " " << kmax + m << endl; // min & max k
-
-}
-
-/*
-#include <iostream>
-using namespace std;
-
-int main() {
+int benchMain() {
 
 	// inits
 	int n = 0, m = 0, kmax = 0;
@@ -157,10 +127,39 @@ int main() {
 
 }
 
+/*
+Allen wants to enter a fan zone that occupies a round square and has n entrances.
+
+There already is a queue of ai people in front of the i-th entrance. 
+Each entrance allows one person from its queue to enter the fan zone in one minute.
+
+Allen uses the following strategy to enter the fan zone:
+
+Initially he stands in the end of the queue in front of the first entrance.
+Each minute, if he is not allowed into the fan zone during the minute 
+(meaning he is not the first in the queue), he leaves the current queue and 
+stands in the end of the queue of the next entrance 
+(or the first entrance if he leaves the last entrance).
+Determine the entrance through which Allen will finally enter the fan zone.
 */
 
+int worldCupMain() {
+	int n = 2, m = 0, in=0, out=0, min = INT_MAX;
+	cin >> n;
+	int* entrances = new int[n];
+	for (int i = 1; i <= n; i++) {
+		cin >> in;
+		if ((in - i + n) / n < min)
+		{
+			min = (in - i + n) / n;
+			out = i;
+		}
+
+	}
+	cout << out;
+	return 0;
+}
 
 int main() {
-	benchMain();
-	return 0;
+	worldCupMain();
 }
