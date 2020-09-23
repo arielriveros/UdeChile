@@ -1,2 +1,5 @@
 ﻿  Tarea-01.cpp
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(97,20): warning C4018: '<': signed/unsigned mismatch
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(100,18): warning C4018: '>=': signed/unsigned mismatch
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(106,28): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
   Tarea-01.vcxproj -> D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Debug\Tarea-01.exe

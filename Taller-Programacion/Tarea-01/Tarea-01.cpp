@@ -1,11 +1,12 @@
 #include <iostream>
+#include <algorithm>
+#include <cmath>
 #include <time.h>
 #include <ctime>
 
 using namespace std;
 
 clock_t start, endd;
-
 /*
 input
 	integer n	number of piles of worms
@@ -30,62 +31,44 @@ ex
 
 void wormsBS(int juicy, int floor, int roof, int* labels) {
 	while (floor <= roof) {
-
 		int mid = (floor + roof) / 2;
-
-		if (juicy == labels[mid]) { cout << mid + 1 << endl; break; }
-
-		if (juicy < labels[mid]) {
-			if (juicy > labels[mid - 1]) {
-				cout << mid+1 << endl;
+		if (juicy <= labels[mid]) {
+			if (juicy > labels[mid - 1] || juicy == labels[mid]) {
+				cout << mid + 1 << endl;
 				break;
 			}
-			if (juicy == labels[mid]) { cout << mid+1 << endl; break; }
 			else {
-				roof = mid-1;
+				roof = mid;
 			}
 		}
-
 		else if (juicy > labels[mid]) {
-			if (juicy < labels[mid + 1]) {
+			if (juicy < labels[mid + 1] || juicy == labels[mid+1]) {
 				cout << mid + 2 << endl;
 				break;
 			}
-			if (juicy == labels[mid]) { cout << mid+1 << endl; break; }
 			else {
-				floor = mid+1;
+				floor = mid;
 			}
 		}
 	}
 }
 
-void wormsMain() {
-
-	// inits
-
-	int n = 0;
-	int m = 0;
-	int juicy = 0;
-	int maxLabel = 0;
-
-	// inputs
-
+int wormsMain() {
+	unsigned int n = 0, m = 0, juicy = 0, maxLabel = 0;
 	cin >> n;
 	int* piles = new int[n];
 	int* labels = new int[n];
-
-	for (int i=0; i < n; ++i) { 
-		cin >> piles[i]; 
+	for (int i = 0; i < n; ++i) {
+		cin >> piles[i];
 		maxLabel += piles[i];
 		labels[i] = maxLabel;
 	}
-
 	cin >> m;
-	for (int j = 1; j <= m; j++) { 
+	for (int j = 1; j <= m; j++) {
 		cin >> juicy;
-		// binary search
 		wormsBS(juicy, 0, n, labels);
 	}
+	return 0;
 }
 
 /*
@@ -99,12 +82,11 @@ k and the maximum possible k.
 Nobody leaves the taken seat during the whole process.
 */
 
-
 int benchMain() {
 
 	// inits
-	int n = 0, m = 0, kmax = 0;
-		float kmin = 0;
+	unsigned int n = 0, m = 0, kmax = 0;
+	float kmin = 0;
 
 	// input
 	cin >> n;
@@ -121,6 +103,7 @@ int benchMain() {
 	}
 
 	kmin = ceil((kmin+m)/n);
+	if (kmin < kmax) { kmin = kmax; }
 
 	cout << kmin << " " << kmax + m << endl;
 		return 0;
@@ -160,6 +143,72 @@ int worldCupMain() {
 	return 0;
 }
 
+/*
+ABCDEF
+find all (a,b,c,d,e,f) such (a*b + c)/d - e = f
+*/
+int binSearch(int search, int* arr, int lower, int upper) {
+	int mid = (lower + upper) / 2;
+	int out = 0;
+	if (lower <= upper) {
+		if (search == arr[mid]) {
+			out = 1;
+		}
+		else {
+			if (search < arr[mid]) {
+				return binSearch(search, arr, lower, mid - 1);
+			}
+			else {
+				return binSearch(search, arr, mid + 1, upper);
+			}
+		}
+	}
+	return out;
+}
+
+
+int abcdef(int n, int *arr) {
+
+	/* reorder -> a*b+c = d*(e+f)
+				 (left)	  (right)
+	*/
+	int left = 0;
+	int* right = new int[n*n*n+1];
+	int m = 0;
+	for (int d = 0; d < n; d++) {
+		if (arr[d] != 0) {
+			for (int e = 0; e < n; e++) {
+				for (int f = 0; f < n; f++) {
+					right[m++] = arr[d] * (arr[e] + arr[f]);
+				}
+			}
+		}
+	}
+	int out = 0;
+	sort(right,right+n);
+	for (int a = 0; a < n; a++) {
+		for (int b = 0; b < n; b++) {
+			for (int c = 0; c < n; c++) {
+				left = arr[a] * arr[b] + arr[c];
+				out += binSearch(left, right, 0, n*n*n + 1);
+			}
+		}
+	}
+	return out;
+}
+
+int abcdefMain() {
+	int n = 0; 
+	cin >> n;
+	int* arr = new int[n];
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	cout << abcdef(n,arr);
+	return 0;
+}
+
 int main() {
-	worldCupMain();
+	wormsMain();
+	return 0;
 }
