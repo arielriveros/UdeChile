@@ -3,6 +3,7 @@
 #include <cmath>
 #include <time.h>
 #include <ctime>
+#include <climits>
 
 using namespace std;
 
@@ -172,9 +173,19 @@ int abcdef(int n, int *arr) {
 	/* reorder -> a*b+c = d*(e+f)
 				 (left)	  (right)
 	*/
-	int left = 0;
-	int* right = new int[n*n*n+1];
+	int bound = n * n * n + 1;
+	int* left = new int[bound];;
+	int* right = new int[bound];
 	int m = 0;
+
+	for (int a = 0; a < n; a++) {
+		for (int b = 0; b < n; b++) {
+			for (int c = 0; c < n; c++) {
+				left[m++] = arr[a] * arr[b] + arr[c];
+			}
+		}
+	}
+	m = 0;
 	for (int d = 0; d < n; d++) {
 		if (arr[d] != 0) {
 			for (int e = 0; e < n; e++) {
@@ -184,31 +195,45 @@ int abcdef(int n, int *arr) {
 			}
 		}
 	}
-	int out = 0;
-	sort(right,right+n);
-	for (int a = 0; a < n; a++) {
-		for (int b = 0; b < n; b++) {
-			for (int c = 0; c < n; c++) {
-				left = arr[a] * arr[b] + arr[c];
-				out += binSearch(left, right, 0, n*n*n + 1);
-			}
+	int out = -1;
+
+	for (int i = 0; i < bound; i++) {
+		for (int j = 0; j < bound; j++) {
+			if (left[i] == right[j]) { out++; }
 		}
 	}
+
 	return out;
 }
 
+
 int abcdefMain() {
+	
 	int n = 0; 
 	cin >> n;
 	int* arr = new int[n];
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	cout << abcdef(n,arr);
+	int k = 100;
+	int randNum = 0;
+	int* test = new int[k];
+	for (int i = 0; i < k; i++) {
+		randNum = rand() % 30001;
+		test[i] = randNum;
+	}
+
+	start = clock();
+	cout << abcdef(k, test) << endl;
+	endd = clock();
+
+	double time_taken = double(endd - start) / double(CLOCKS_PER_SEC);
+	cout << "Time: " << time_taken << endl;
 	return 0;
 }
 
 int main() {
-	wormsMain();
+	ios::sync_with_stdio(0); cin.tie(0);
+	abcdefMain();
 	return 0;
 }

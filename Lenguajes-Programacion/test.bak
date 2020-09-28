@@ -1,0 +1,12 @@
+#lang play
+(require "T1.rkt")
+
+(print-only-errors #t)
+
+(define ejemplo1
+  (compound 3 1 (compound 4 1 (compound 12 1 (simple 4)))))
+
+(define ejemplo2
+  (compound 1 1 (simple 5)))
+
+(test (degree ejemplo1) 3)

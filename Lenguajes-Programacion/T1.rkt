@@ -10,15 +10,12 @@ RUT: 19.528.980-8
 ;; Parte a)
 
 #|
-<CFraction> ::= (simple <num>)
-             |  (compound <num> <num> <CFraction>)
+<CFraction> ::= (simple <value>)
+             |  (compound <value> <value> <CFraction>)
 |#
 (deftype CFraction
   (simple num)
   (compound num1 num2 comp))
-
-(define ejemplo
-  (compound 3 1 (compound 4 1 (compound 12 1 (simple 4)))))
 
 ;; Parte b)
 ;; eval :: CFraction -> Rational
@@ -27,6 +24,7 @@ RUT: 19.528.980-8
   (match cFrac
    [(simple n) n]
    [(compound n1 n2 c) (+ n1 (/ n2 (eval c)))]
+;;   [(compound n1 n2 c) (lambda (x) (+ n1 (/ n2 (eval x)))) c]
     )
  )
 
@@ -36,8 +34,8 @@ RUT: 19.528.980-8
 ;; entrega el grado de la fraccion continua
 (define (degree cFrac)
   (match cFrac
-    [(simple n) 0]
-    [(compound n1 n2 c) (+ 1 (degree c))]
+    [(simple _) 0]
+    [(compound _ _ c) (+ 1 (degree c))]
     )
   )
 
@@ -48,18 +46,30 @@ RUT: 19.528.980-8
   (lambda (cFrac)
     (match cFrac
       [(simple num) (f num)]
-      [(compound n1 n2 c) (g n1 n2 ((fold f g) c))])
+      [(compound n1 n2 c) (g n1 n2 ((fold f g) c))]
+      )
     )
   )
 
 
 ;; Parte e)
 ;; eval2 :: CFraction -> Rational
-
+(define eval2
+  (fold identity (lambda (n1 n2 x) (+ n1 (/ n2 x)))))
 
 ;; degree2 ::  CFraction -> Integer
+(define degree2
+  (fold (lambda (x) (* x 0)) (lambda (n1 n2 x) (+ x 1)))
+  )
 
+(define test1
+  (simple 10))
 
+(define test2
+  (compound 3 1 (compound 4 1 (compound 12 1 (simple 4)))))
+
+(define test3
+  (compound 1 1 (simple 5)))
 
 
 ;; Parte f)
@@ -78,8 +88,5 @@ RUT: 19.528.980-8
 
 ;; Parte h)
 ;; rac-to-cf :: Rational -> CFraction
-
-
-
 
 

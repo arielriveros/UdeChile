@@ -3,4 +3,33 @@
 
 (print-only-errors #t)
 
+(define test1
+  (simple 10))
+(define test2
+  (compound 3 1 (compound 4 1 (compound 12 1 (simple 4)))))
+(define test3
+  (compound 1 1 (simple 5)))
+(define test4
+  (compound 0 1 (compound 0 1 (compound 0 1 (simple 1)))))
 
+
+;;Tests para eval
+(test (eval test1) 10)
+(test (eval test2) 649/200)
+(test (eval test3) 1.2)
+(test (eval test4) 1)
+;;Tests para degree
+(test (degree test1) 0)
+(test (degree test2) 3)
+(test (degree test3) 1)
+(test (degree test4) 3)
+;;Tests para eval2
+(test (eval2 test1) 10)
+(test (eval2 test2) 649/200)
+(test (eval2 test3) 1.2)
+(test (eval2 test4) 4)
+;;Tests para degree2
+(test (degree2 test1) 0)
+(test (degree2 test2) 3)
+(test (degree2 test3) 1)
+(test (degree2 test4) 4)
