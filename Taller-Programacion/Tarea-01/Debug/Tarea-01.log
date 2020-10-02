@@ -1,7 +1,8 @@
 ﻿  Tarea-01.cpp
-D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(62,20): warning C4018: '<': signed/unsigned mismatch
-D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(68,20): warning C4018: '<=': signed/unsigned mismatch
-D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(98,20): warning C4018: '<': signed/unsigned mismatch
-D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(101,18): warning C4018: '>=': signed/unsigned mismatch
-D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(107,28): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-  Tarea-01.vcxproj -> D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Debug\Tarea-01.exe
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(51,2): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(54,3): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(55,2): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(57,3): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(124,20): warning C4018: '<': signed/unsigned mismatch
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(127,18): warning C4018: '>=': signed/unsigned mismatch
+D:\Users\ariel\Projects\UdeChile\Taller-Programacion\Tarea-01\Tarea-01.cpp(133,28): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data

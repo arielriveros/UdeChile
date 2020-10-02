@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hackbox</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="validador.js"></script>
+</head>
+
+
+<body>
+
+<div class="menu entrada">
+
+    <div class="entrada">
+        <a href="https://google.cl">Home</a>
+    </div>
+
+    <div class="entrada">
+        <a href="https://hackbox.html">Favoritos</a>
+    </div>
+
+    <div class="entrada" style="border-right: 0">
+        <a href="ljfklsd">Configuraciones</a>
+    </div>
+
+</div>
+
+<div class="titulo negrita">Hackbox</div>
+<div class="main">
+
+    <form id="miformulario" method="post" action="" onsubmit="return validacionFormulario()">
+
+        <div class="entrada">
+
+            <div class="leyenda">Nombre</div>
+
+            <input type="text" id="nombre" minlength="10" maxlength="100" required="required"
+                   placeholder="Escriba su nombre de archivo aqui"/>
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Archivo</div>
+
+            <input type="file" id="archivo" required="required" accept="application/pdf">
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Privacidad</div>
+
+            <select id="privacidad" required="required">
+                <option value="" selected="selected">Seleccione una opción</option>
+                <option value="1">Público</option>
+                <option value="2">Privado</option>
+            </select>
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Contraseña</div>
+
+            <input type="password" id="password" size="10" maxlength="10">
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Autodestruir</div>
+
+            <input type="number" id="autodestruir" min="1" max="3153600">
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda comentario">Comentario</div>
+
+            <textarea id="comentario" maxlength="1000" rows="10" cols="40"
+                      placeholder="Ingrese sus comentarios acá"></textarea>
+
+        </div>
+
+        <div class="entrada botones">
+
+            <button id="enviar" type="submit">Submit</button>
+
+            <button id="borrar" type="reset">Borrar</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div id="error">Este es un mensaje de error</div>
+
+</body>
+
+
+</html>

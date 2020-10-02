@@ -27,9 +27,15 @@
 (test (eval2 test1) 10)
 (test (eval2 test2) 649/200)
 (test (eval2 test3) 1.2)
-(test (eval2 test4) 4)
+(test (eval2 test4) 1)
 ;;Tests para degree2
 (test (degree2 test1) 0)
 (test (degree2 test2) 3)
 (test (degree2 test3) 1)
-(test (degree2 test4) 4)
+(test (degree2 test4) 3)
+;;Tests para mysterious-cf
+(test (mysterious-cf 0) (simple 3))
+(test (mysterious-cf 1) (compound 3 1 (simple 6)))
+(test (mysterious-cf 2) (compound 3 1 (compound 6 9 (simple 6))))
+(test (mysterious-cf 3) (compound 3 1 (compound 6 9 (compound 6 25 (simple 6)))))
+

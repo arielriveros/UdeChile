@@ -62,19 +62,18 @@ RUT: 19.528.980-8
   (fold (lambda (x) (* x 0)) (lambda (n1 n2 x) (+ x 1)))
   )
 
-(define test1
-  (simple 10))
-
-(define test2
-  (compound 3 1 (compound 4 1 (compound 12 1 (simple 4)))))
-
-(define test3
-  (compound 1 1 (simple 5)))
-
 
 ;; Parte f)
 ;; mysterious-cf :: Integer -> CFraction
 
+(define (sucesion n)
+  (map (lambda (x) (* (+ x 1) (+ x 1))) (range 0 (* 2 n) 2))
+  )
+
+(define (mysterious-cf n)
+  (cond
+   [(= n 0) (simple 3)]
+   [else (compound 6 (expt (- (* 2 n) 1) 2) (mysterious-cf (- n 1)) )]))
 
 
 ;; Parte g)

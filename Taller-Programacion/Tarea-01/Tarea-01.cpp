@@ -4,9 +4,8 @@
 #include <time.h>
 #include <ctime>
 #include <climits>
-
+#include <stdio.h>
 using namespace std;
-
 clock_t start, endd;
 /*
 input
@@ -30,44 +29,58 @@ ex
 		3
 */
 
-void wormsBS(int juicy, int floor, int roof, int* labels) {
-	while (floor <= roof) {
-		int mid = (floor + roof) / 2;
-		if (juicy <= labels[mid]) {
-			if (juicy > labels[mid - 1] || juicy == labels[mid]) {
-				cout << mid + 1 << endl;
-				break;
-			}
-			else {
-				roof = mid;
-			}
+/*
+int wormsBS(int juicy, int* arr, int lower, int upper) {
+	int mid, out = 0;
+	if (lower <= upper) {
+		mid = (lower + upper) / 2;
+		if (juicy <= arr[mid]) {
+			if (juicy > arr[mid - 1]) out = mid+1;
+			else return wormsBS(juicy, arr, lower, mid - 1);
 		}
-		else if (juicy > labels[mid]) {
-			if (juicy < labels[mid + 1] || juicy == labels[mid+1]) {
-				cout << mid + 2 << endl;
-				break;
-			}
-			else {
-				floor = mid;
-			}
+		else {
+			if (juicy <= arr[mid]) out = mid + 2;
+			else return wormsBS(juicy, arr, mid + 1, upper);
 		}
 	}
+	return out;
 }
-
+*/
 int wormsMain() {
-	unsigned int n = 0, m = 0, juicy = 0, maxLabel = 0;
-	cin >> n;
-	int* piles = new int[n];
-	int* labels = new int[n];
-	for (int i = 0; i < n; ++i) {
-		cin >> piles[i];
-		maxLabel += piles[i];
-		labels[i] = maxLabel;
+	int n, m, labels = 0;
+	scanf("%d", &n);
+	int* arr = new int[n];
+	int* juicy = new int[m];
+	for (int i = 0; i < n; i++)           
+	scanf("%d", &arr[i]);    
+	scanf("%d", &m);         
+	for (int i = 0; i < m; i++)
+	scanf("%d", &juicy[i]);
+
+	for (int i = 0; i < n; i++)
+	{
+		labels += arr[i];       
+		arr[i] = labels;
 	}
-	cin >> m;
-	for (int j = 1; j <= m; j++) {
-		cin >> juicy;
-		wormsBS(juicy, 0, n, labels);
+	int mid;
+	for (int i = 0; i < m; i++)
+	{
+		int lower = 0, upper = n;
+		while (lower <= upper - 1){
+			mid = (lower + upper) / 2;
+			if (arr[mid] == juicy[i]) { printf("%d\n", mid + 1); break; }
+			else if (arr[mid] < juicy[i])
+			{
+				if (juicy[i] <= arr[mid + 1]) {printf("%d\n", mid + 2);break;}
+				else lower = mid + 1;
+			}
+			else
+			{
+				if (mid == 0) {printf("%d\n", mid + 1); break;}
+				if (juicy[i] > arr[mid - 1]){printf("%d\n", mid + 1);break;}
+				else upper = mid;
+			}
+		}
 	}
 	return 0;
 }
@@ -167,7 +180,6 @@ int binSearch(int search, int* arr, int lower, int upper) {
 	return out;
 }
 
-
 int abcdef(int n, int *arr) {
 
 	/* reorder -> a*b+c = d*(e+f)
@@ -206,7 +218,6 @@ int abcdef(int n, int *arr) {
 	return out;
 }
 
-
 int abcdefMain() {
 	
 	int n = 0; 
@@ -232,8 +243,45 @@ int abcdefMain() {
 	return 0;
 }
 
+int asFastAsPossibleMain() {
+	
+	double n, l, v1, v2, k;
+	cin >> n;
+	cin >> l;
+	cin >> v1;
+	cin >> v2;
+	cin >> k;
+
+	double timeLeft = l/v1;
+	double lower = 0, upper = timeLeft, min = -1;
+	double grupos = ceil(n/ k);
+
+	if (n <= k) {
+		cout << l/v2;
+	}
+
+	else {
+		while (upper - lower > 1e-8) {
+
+			double mid = (lower+upper)/2;
+			double eps = (l-(((timeLeft-mid)*v1*v2)/(v2-v1)))/v1
+				-(grupos-1)*((2*v1*v2*(timeLeft-mid))/((v2*v2)-(v1*v1)));
+
+			if (eps > 1e-6) {
+				min = mid;
+				upper = mid;
+			}
+			else {
+				lower = mid;
+			}
+		}
+		cout << min;
+	}
+	return 0;
+}
+
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0);
-	abcdefMain();
+	wormsMain();
 	return 0;
 }

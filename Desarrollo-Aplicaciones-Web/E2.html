@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hackbox</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <script src="validador.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="menu entrada">
+
+    <div class="entrada">
+        <a href="https://google.cl">Home</a>
+    </div>
+
+    <div class="entrada">
+        <a href="https://hackbox.html">Favoritos</a>
+    </div>
+
+    <div class="entrada" style="border-right: 0">
+        <a href="ljfklsd">Configuraciones</a>
+    </div>
+
+</div>
+
+<div class="titulo negrita">Hackbox</div>
+<div class="main">
+
+    <form id="miformulario" method="post" action="" onsubmit="return validacionFormulario()">
+
+        <div class="entrada">
+
+            <div class="leyenda">Nombre</div>
+
+            <input type="text" id="nombre" minlength="10" maxlength="100" required="required" placeholder="Escriba su nombre de archivo aqui" />
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Archivo</div>
+
+            <input type="file" id="archivo" required="required" accept="application/pdf">
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Privacidad</div>
+
+            <select id="privacidad" required="required">
+                <option value="" selected="selected">Seleccione una opción</option>
+                <option value="1">Público</option>
+                <option value="2">Privado</option>
+            </select>
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Contraseña</div>
+
+            <input type="password" id="password" size="10" maxlength="10">
+
+            (Opcional)
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda">Autodestruccion</div>
+
+            <input type="number" id="autodestruir" min="1" max="31536000" maxlength="10" placeholder="Segundos para autodestrucción">
+
+            (Opcional)
+
+        </div>
+
+        <div class="entrada">
+
+            <div class="leyenda"></div>
+            <textarea name="comentario" placeholder="Ingrese sus comentarios acá (opcional)" maxlength="1000" id="comentarios" rows="10" cols="40"></textarea>
+        </div>
+            
+        <div class="entrada botones">
+            <button id="enviar" type="submit">Submit</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+
+</html>
