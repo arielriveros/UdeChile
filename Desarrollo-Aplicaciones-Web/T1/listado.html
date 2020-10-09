@@ -3,63 +3,10 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Censo de mascotas</title>
-    <style>
-        body {
-            background-color: lightcyan;
-        }
-        .menu {
-            background-color: darkcyan;
-            padding: 5px;
-            font-weight: 300;
-            text-align: center;
-        }
-        .main {
-            background-color: paleturquoise;
-            border-radius: 5px;
-            padding: 35px;
-            margin: 10px;
-        }
-        .menubutton {
-            display: inline-block;
-            padding: 15px;
-            background-color: lightsteelblue;
-            border-radius: 10px;
-            border: 1px solid;
-            border-color: darkcyan;
-            width: 20%;
-            text-align: center;
-        }
-            .menubutton:hover {
-                background-color: darkcyan;
-                border-color: beige;
-                color: white;
-            }
-        a {
-            text-decoration: none;
-            color: black;
-        }
-            a:hover {
-                text-decoration: none;
-                color: inherit;
-            }
 
-        .showdemo {
-            display: inline-block;
-            border: 1px solid;
-            padding: 20px;
-            height: 15%;
-            left: 5%;
-            right: 5%;
-            bottom: 10%;
-            position: fixed;
-        }
-        table {
-        table-layout:fixed;
-        width:100%;
-        }
-
-    </style>
 </head>
 <body>
     <div class="menu">
@@ -69,7 +16,139 @@
     </div>
 
     <div class="main">
-        AQUI VA UNA LISTA        
+        <div style="background-color:azure; padding: 15px; height: 100%">
+            <table id="tabla_oculta">
+                <tr>
+                    <th style="width:250px ; text-align:left" onclick="mostrarInfo1()">Comuna: La Florida</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo1()"> Calle: Av. Vicuña Maquena</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo1()"> Tipo-Cantidad: Perros: 1, Gatos: 1</th>
+                    <th style="text-align:center">
+                        Foto <br>
+                        <img onclick="agrandarImagen1()" src="img/demo1.png" id="foto1" style="width:320px; height:240px; padding: 1px">
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr id="infoOculta1" style="display: none;">
+                    <td style="background-color: azure; padding: 15px; height: 100%">
+                        Fecha de Ingreso: 1 de enero, 2020 <br>
+                        Nombre Contacto: Juan Perez <br>
+                        Total Mascotas: 2 <br>
+                        Total Fotos: 1 <br>
+                        <button style="text-align:right" onclick="ocultarInfo1()">Cerrar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div style="background-color:azure; padding: 15px; height: 100%">
+            <table id="tabla_oculta">
+                <tr>
+                    <th style="width:250px ; text-align:left" onclick="mostrarInfo2()">Comuna: Santiago</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo2()"> Calle: Rafael Sotomayor</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo2()"> Tipo-Cantidad: Gatos: 1</th>
+                    <th style="text-align:center">
+                        Foto <br>
+                        <img onclick="agrandarImagen2()" src="img/demo2.jpg" id="foto2" style="width:320px; height:240px; padding: 1px">
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr id="infoOculta2" style="display: none;">
+                    <td style="background-color: azure; padding: 15px; height: 100%">
+                        Fecha de Ingreso: 1 de enero, 2020 <br>
+                        Nombre Contacto: Juana Perez <br>
+                        Total Mascotas: 1 <br>
+                        Total Fotos: 1 <br>
+                        <button style="text-align:right" onclick="ocultarInfo2()">Cerrar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div style="background-color:azure; padding: 15px; height: 100%">
+            <table id="tabla_oculta">
+                <tr>
+                    <th style="width:250px ; text-align:left" onclick="mostrarInfo3()">Comuna: Maipú</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo3()"> Calle: Pajaritos</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo3()"> Tipo-Cantidad: Hamsters: 1</th>
+                    <th style="text-align:center">
+                        Foto <br>
+                        <img onclick="agrandarImagen3()" src="img/demo3.jpg" id="foto3" style="width:320px; height:240px; padding: 1px">
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr id="infoOculta3" style="display: none;">
+                    <td style="background-color: azure; padding: 15px; height: 100%">
+                        Fecha de Ingreso: 1 de enero, 2020 <br>
+                        Nombre Contacto: Juano Pera <br>
+                        Total Mascotas: 1 <br>
+                        Total Fotos: 1 <br>
+                        <button style="text-align:right" onclick="ocultarInfo3()">Cerrar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div style="background-color:azure; padding: 15px; height: 100%">
+            <table id="tabla_oculta">
+                <tr>
+                    <th style="width:250px ; text-align:left" onclick="mostrarInfo4()">Comuna: Puente Alto</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo4()"> Calle: Ejercito Libertador</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo4()"> Tipo-Cantidad: Perros: 1</th>
+                    <th style="text-align:center">
+                        Foto <br>
+                        <img onclick="agrandarImagen4()" src="img/demo4.jpg" id="foto4" style="width:320px; height:240px; padding: 1px">
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr id="infoOculta4" style="display: none;">
+                    <td style="background-color: azure; padding: 15px; height: 100%">
+                        Fecha de Ingreso: 1 de enero, 2020 <br>
+                        Nombre Contacto: John Pear <br>
+                        Total Mascotas: 1 <br>
+                        Total Fotos: 1 <br>
+                        <button style="text-align:right" onclick="ocultarInfo4()">Cerrar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div style="background-color:azure; padding: 15px; height: 100%">
+            <table id="tabla_oculta">
+                <tr>
+                    <th style="width:250px ; text-align:left" onclick="mostrarInfo5()">Comuna: Springfield</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo5()"> Calle: Av.Siempre viva</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo5()"> Tipo-Cantidad: Perros: 1</th>
+                    <th style="text-align:center">
+                        Foto <br>
+                        <img onclick="agrandarImagen5()" src="img/demo5.jpg" id="foto5" style="width:320px; height:240px; padding: 1px">
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr id="infoOculta5" style="display: none;">
+                    <td style="background-color: azure; padding: 15px; height: 100%">
+                        Fecha de Ingreso: 1 de enero, 2020 <br>
+                        Nombre Contacto: Bar sinso<br>
+                        Total Mascotas: 1 <br>
+                        Total Fotos: 1 <br>
+                        <button style="text-align:right" onclick="ocultarInfo5()">Cerrar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
 </body>

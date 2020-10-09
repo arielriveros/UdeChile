@@ -10,18 +10,12 @@ RUT: 19.528.980-8
 ;; Parte a)
 
 #|
-<CFraction> ::= (simple <num>)
-             |  (compound <num> <num> <CFraction>)
+<CFraction> ::= (simple <value>)
+             |  (compound <value> <value> <CFraction>)
 |#
 (deftype CFraction
   (simple num)
   (compound num1 num2 comp))
-
-(define ejemplo1
-  (compound 3 1 (compound 4 1 (compound 12 1 (simple 4)))))
-
-(define ejemplo2
-  (compound 1 1 (simple 5)))
 
 ;; Parte b)
 ;; eval :: CFraction -> Rational
@@ -60,31 +54,64 @@ RUT: 19.528.980-8
 
 ;; Parte e)
 ;; eval2 :: CFraction -> Rational
-(define (eval2 cFrac)
-  (fold identity identity))
+(define eval2
+  (fold identity (lambda (n1 n2 x) (+ n1 (/ n2 x)))))
 
 ;; degree2 ::  CFraction -> Integer
-(define (degree2 cFrac)
-  (fold (* 0) (+ 1))
+(define degree2
+  (fold (lambda (x) (* x 0)) (lambda (n1 n2 x) (+ x 1)))
   )
-
 
 
 ;; Parte f)
 ;; mysterious-cf :: Integer -> CFraction
 
+(define (mysterious-cf n)
+  ((lambda (cFrac)
+     (match cFrac
+       [(simple num) (simple 3)]
+       [(compound n1 n2 c) (compound 3 n2 c)]
+       )
+     ) (mysterious-aux n))
+  )
+
+;; mysterious-aux es una función auxiliar, calcula las secuencias correctamente a partir de n=1
+;; mysterious-cf corrige para n=0 y n=1
+(define (mysterious-aux n [m 1])
+  (cond
+     [(< n 0) (error "Error:argumento negativo")]
+     [(= n 0) (simple 6)]
+     [else (compound 6 (expt (sub1 (* m 2)) 2) (mysterious-aux (sub1 n) (add1 m)))]
+     )
+  )
 
 
 ;; Parte g)
 ;; from-to :: Integer -> Integer -> listOf Integer
+(define (from-to n0 nf)
+  (range n0 (add1 nf))
+  )
 
 ;; mysterious-list :: Integer -> listOf Float
+(define (mysterious-list n)
+  (map fl (map eval (map mysterious-cf (from-to 0 n))))
+  )
 
 ;; A que numero tiende (mysterious-cf k) cuando k tiende a infinito?
-
+;; Tiende a π
 
 
 ;; Parte h)
 ;; rac-to-cf :: Rational -> CFraction
+(define (rac-to-cf rat)
+  (let ([a (floor rat)]
+        [b (expt (- rat (floor rat)) -1)]
+        )
+    (cond
+      [(< b 0) (simple 1)]
+      [else (compound a 1 (rac-to-cf b))]
+      )
+   )
+)
 
 

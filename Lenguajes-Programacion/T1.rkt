@@ -66,26 +66,50 @@ RUT: 19.528.980-8
 ;; Parte f)
 ;; mysterious-cf :: Integer -> CFraction
 
-(define (sucesion n)
-  (map (lambda (x) (* (+ x 1) (+ x 1))) (range 0 (* 2 n) 2))
+(define (mysterious-cf n)
+  ((lambda (cFrac)
+     (match cFrac
+       [(simple num) (simple 3)]
+       [(compound n1 n2 c) (compound 3 n2 c)]
+       )
+     ) (mysterious-aux n))
   )
 
-(define (mysterious-cf n)
+;; mysterious-aux es una función auxiliar, calcula las secuencias correctamente a partir de n=1
+;; mysterious-cf corrige para n=0 y n=1
+;; mysterious-aux :: Integer -> CFraction
+(define (mysterious-aux n [m 1])
   (cond
-   [(= n 0) (simple 3)]
-   [else (compound 6 (expt (- (* 2 n) 1) 2) (mysterious-cf (- n 1)) )]))
+     [(< n 0) (error "Error:argumento negativo")]
+     [(= n 0) (simple 6)]
+     [else (compound 6 (expt (sub1 (* m 2)) 2) (mysterious-aux (sub1 n) (add1 m)))]
+     )
+  )
 
 
 ;; Parte g)
 ;; from-to :: Integer -> Integer -> listOf Integer
+;; Genera una lista de n0 hasta nf inclusivo
+(define (from-to n0 nf)
+  (range n0 (add1 nf))
+  )
 
 ;; mysterious-list :: Integer -> listOf Float
+(define (mysterious-list n)
+  (map fl (map eval (map mysterious-cf (from-to 0 n))))
+  )
 
 ;; A que numero tiende (mysterious-cf k) cuando k tiende a infinito?
-
+;; Tiende a π
 
 
 ;; Parte h)
 ;; rac-to-cf :: Rational -> CFraction
-
-
+;; transforma un racional a su representación en fracción continua
+(define (rac-to-cf rat)
+  (let ([i (floor rat)] [r (- rat (floor rat))])
+    (cond
+      [(= r 0) (simple i)]
+      [else (compound i 1 (rac-to-cf (/ 1 r)))])
+    )
+)
