@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="ejercicio3.css">
+        <script src="ejercicio3.js"></script>
+        <title>Ejercicio 3</title>
+    </head>
+    
+<body>
+
+<h1>¡Arma tu Pizza!</h1>
+
+<div id="container">
+  <form id="myform" method="post" action="response.py" onsubmit="dataValidator();">
+    <label for="nombre" class="text-field">Nombre</label>
+    <input type="text" id="nombre" name="nombre" size="20" placeholder="Nombre">
+
+    <label for="telefono" class="text-field">Teléfono</label>
+    <input type="text" id="telefono" name="telefono" placeholder="Ingrese su teléfono acá">
+
+    <label for="direccion" class="text-field">Dirección</label>
+    <input type="text" id="direccion" name="direccion" placeholder="Dirección">
+
+    
+
+    <label for="comuna" class="text-field">Comuna</label>
+    <select id="comuna" name="comuna">
+      <option value="1000">Santiago</option>
+      <option value="1010">Providencia</option>
+      <option value="1011">Recoleta</option>
+    </select>
+
+    <label for="masa" class="text-field">Tipo de Masa</label>
+    <br>
+    <br>
+    <label for="masa1" class="text-field">Masa Delgada</label>
+    <input type="radio" name="masa" value="1">
+    <label for="masa1" class="text-field">Masa Normal</label>
+    <input type="radio" name="masa" value="2">   
+
+    <label for="ingrediente" class="text-field">Ingredientes</label>
+    <select id="ingrediente" name="ingrediente" onclick="changeIngredients();">
+      <option value="0">Seleccione un ingrediente</option>
+      <option value="1">Pepperoni</option>
+      <option value="2">Aceitunas</option>
+      <option value="3">Carne</option>
+    </select>
+
+    <label for="comentario" class="text-field">Comentarios</label>
+    <textarea id="comentario" name="comentario" placeholder="Ingrese comentarios acá"></textarea>
+
+    <input type="submit" value="Crear mi pizza">
+    <button id="myButton" onclick="cleanForm();">Limpiar</button>
+  </form>
+</div>
+
+</body>
+</html>
