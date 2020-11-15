@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../files/style.css">
+    <script src="../files/script.js"></script>
+    <title>Censo de mascotas</title>
+
+</head>
+<body>
+    <div class="menu">
+        <div class="menubutton" style="background-color:darkslategray"> <a href="index.html"> Índice</a>  </div>
+        <div class="menubutton"> <a href="listado.html"> Listado de mascotas</a>  </div>
+        <div class="menubutton"> <a href="stats.html"> Estadisticas</a>  </div>
+    </div>
+
+    <div class="main">
+
+        <div>Informar Mascota </div>
+        <form id="formulario" method="post" action="response_form.py" onsubmit="return validarFormulario()">
+
+        <div id="error">Mensaje de Error</div>
+
+                <div class="subtitulo">Domicilio</div>
+                <div class="entrada">
+                    <div>Región</div>
+                    <select id="region" required="required">
+                        <option value="" selected="selected">Seleccione una opción</option>
+                        <option value="1">Arica y Parinacota</option>
+                        <option value="2">Tarapacá</option>
+                        <option value="3">Antofagasta</option>
+                        <option value="4">Atacama</option>
+                        <option value="5">Coquimbo</option>
+                        <option value="6">Valpo</option>
+                        <option value="7">Metropolitana</option>
+                        <option value="8">O'Higgins</option>
+                        <option value="9">Maule</option>
+                        <option value="10">Ñuble</option>
+                        <option value="11">Biobío</option>
+                        <option value="12">Araucanía</option>
+                        <option value="13">Los Ríos</option>
+                        <option value="14">Los Lagos</option>
+                        <option value="15">Aysén</option>
+                        <option value="16">Magallanes</option>
+                    </select>
+                </div>
+                <div class="entrada">
+                    <div>Comuna</div>
+                    <select id="comuna" required="required">
+                        <option value="" selected="selected">Seleccione una opción</option>
+                        <option value="1">Comuna1</option>
+                        <option value="2">Comuna2</option>
+                        <option value="3">Comuna3</option>
+                    </select>
+                </div>
+                <div class="entrada">
+                    <div>Nombre Calle</div>
+                    <input type="text" id="calle" minlength="" maxlength="100" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>Número</div>
+                    <input type="text" id="numero" minlength="" maxlength="20" required="required" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>Sector</div>
+                    <input type="text" id="sector" minlength="" maxlength="100" placeholder="Opcional" />
+                </div>
+                <br>
+                <div class="subtitulo">Datos Contacto</div>
+                <div class="entrada">
+                    <div>Nombre</div>
+                    <input type="text" id="nombre" minlength="1" maxlength="100" required="required" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>E-mail</div>
+                    <input type="email" id="email" minlength="" maxlength="100" required="required" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>Número de Celular</div>
+                    <input type="tel" id="celular" minlength="" maxlength="100" placeholder="Opcional" />
+                </div>
+                <div class="subtitulo">Información Mascota</div>
+                <div class="entrada">
+                    <div>Tipo</div>
+                    <select id="tipo-mascota" onchange="checkOtro()" required="required">
+                        <option value="" selected="selected">Seleccione una opción</option>
+                        <option value="1">Perro</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Pez</option>
+                        <option value="4">Tortuga</option>
+                        <option value="5">Hámster</option>
+                        <option value="6">Loro</option>
+                        <option value="7">Iguana</option>
+                        <option value="8">Araña</option>
+                        <option value="9">Otro</option>
+                    </select>
+                    <input type="text" id="tipo" maxlength="40" style="display:none;
+                            margin-left: 32%" placeholder="Tipo de mascota" />
+                </div>
+                <div class="entrada">
+                    <div>Edad en Años</div>
+                    <input type="text" id="edad" minlength="" maxlength="5" min="0" required="required" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>Color</div>
+                    <input type="text" id="color-mascota" minlength="1" maxlength="30" required="required" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>Raza</div>
+                    <input type="text" id="raza-mascota" minlength="" maxlength="30" required="required" placeholder="Obligatorio" />
+                </div>
+                <div class="entrada">
+                    <div>Esterilizado</div>
+                    <select id="esterilizado-mascota" required="required">
+                        <option value="" selected="selected">Seleccione una opción</option>
+                        <option value="1">Sí</option>
+                        <option value="2">No</option>
+                        <option value="3">No Aplica</option>
+                    </select>
+                </div>
+                <div class="entrada">
+                    <div>Vacunas al Día</div>
+                    <select id="vacunas-mascota" required="required">
+                        <option value="" selected="selected">Seleccione una opción</option>
+                        <option value="1">Sí</option>
+                        <option value="2">No</option>
+                        <option value="3">No Aplica</option>
+                    </select>
+                </div>
+                <div class="entrada">
+                    <br>
+                    <div style="display: inline-block;">Foto</div>
+                    <input type="file" id="foto-mascota" required="required" accept="image/*">
+                    <br>
+                </div>
+                <div style="padding-left: 50%; padding-right:5%">
+                    <button class="menubutton" style="width:150px" id="enviar" type="submit">Submit</button>
+                    <div class="menubutton" style="width:150px" id="informarOtro"> <a href="informar.html" target="_blank"> Informar otra mascota </a>  </div>
+                </div>
+        </form>
+    </div>
+     
+</body>
+</html>

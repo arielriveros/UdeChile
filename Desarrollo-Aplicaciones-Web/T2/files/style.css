@@ -1,0 +1,101 @@
+body {
+    background-color: lightcyan;
+}
+
+.menu {
+    background-color: darkcyan;
+    padding: 5px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.main {
+    background-color: paleturquoise;
+    border-radius: 5px;
+    padding: 35px;
+    margin: 10px;
+}
+
+.menubutton {
+    display: inline-block;
+    padding: 15px;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: darkcyan;
+    width: 20%;
+    text-align: center;
+}
+
+.entrada {
+    padding: 8px;
+    text-align: center;
+}
+
+.subtitulo {
+    font-weight: 100;
+}
+
+    .menubutton:hover {
+        background-color: darkcyan;
+        border-color: beige;
+        color: white;
+    }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    border-right: 1px solid;
+}
+
+tr {
+    border-bottom: 1px solid black;
+}
+
+form {
+
+    background-color: aliceblue;
+    width: 500px;
+    margin-left: 25%;
+    padding: 15px;
+    border: 1px solid;
+    border-color: darkcyan;
+    border-radius: 15px;
+}
+
+.graficos {
+    background-color: azure;
+    padding: 5px;
+}
+
+#error {
+    color:white;
+    background-color: red;
+    text-align: center;
+    padding: 20px;
+    display:none;
+}
+
+
+#tabla_oculta tr:hover {
+    background-color: #F2F2F2;
+}
+
+    #tabla_oculta .Hrow {
+        display: none;
+    } 

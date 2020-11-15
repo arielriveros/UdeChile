@@ -1,0 +1,34 @@
+Mensaje Personal:
+Item 1: Portada de la aplicación con los botones pedidos
+Item 2: Formulario de mascota con los inputs y validaciones pedidas
+Item 3: Vista de estadisticas como la pedida por el enunciado
+Item 4: Listado de mascotas en el formato pedido por el enunciado
+Item 5: Muestra el detalle de la información de las mascotas
+Item 6: Muestran la imágenes de las las mascotas en el formato correcto
+Item 7: Al agregar una nueva mascota se copia el formulario como se indica
+Item 8: Boton volver al inicio
+Item 9: Uso de CSS básico
+Item 10: Deployment de la aplicacion a anakena
+Item 11: HTML o error en CSS ( 0,1 de descuento por cada error)
+Item 1: 60%
+Item 2: 60%
+Item 3: 80%
+Item 4: 100%
+Item 5: 100%
+Item 6: 100%
+Item 7: 12%
+Item 8: 0%
+Item 9: 100%
+Item 10: 100%
+Item 11: -1,5
+Comentario personal: No muestra mensaje de bienvenida
+No se muestran las comunas
+Edad mascota acepta número negativo
+No hay mensaje de confirmación al hacer envío
+Agregar nueva mascota debe tener una nueva sección con los mismos datos, no generar una nueva ventana
+No se pueden agregar más fotos
+No hay botón para volver al inicio
+Una imagen tiene como label "Oil Production"
+informar.html tiene 7 errores (validador)
+listado.html tiene 9 errores (validador)
+stats.html tiene 3 errores (validador)

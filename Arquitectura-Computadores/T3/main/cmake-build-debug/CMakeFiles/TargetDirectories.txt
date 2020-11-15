@@ -1,0 +1,3 @@
+D:/Users/ariel/Projects/UdeChile/Arquitectura-Computadores/T3/main/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Users/ariel/Projects/UdeChile/Arquitectura-Computadores/T3/main/cmake-build-debug/CMakeFiles/main.dir
+D:/Users/ariel/Projects/UdeChile/Arquitectura-Computadores/T3/main/cmake-build-debug/CMakeFiles/rebuild_cache.dir

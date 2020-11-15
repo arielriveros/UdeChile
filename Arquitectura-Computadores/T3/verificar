@@ -1,0 +1,19 @@
+#!/bin/sh
+
+PROG=$1
+OUT=$2
+REF=$3
+
+echo Ejecutando:
+echo ./$PROG '> $OUT'
+./$PROG | tee $OUT
+
+if cmp $OUT $REF
+then
+  echo '# Felicitaciones: test aprobado'
+else
+  echo '# Lo siento: el ordenamiento es incorrecto'
+  echo "# Use el comando od -x $OUT para mostrar la salida en hexadecimal"
+  echo "# Y el comando od -x $REF para mostrar el resultado esperado"
+  exit 1
+fi

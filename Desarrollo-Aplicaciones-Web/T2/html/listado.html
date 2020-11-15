@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../files/style.css">
+    <script src="../files/script.js"></script>
+    <title>Censo de mascotas</title>
+
+</head>
+<body>
+    <div class="menu">
+        <div class="menubutton" > <a href="informar.html">Informar mascota</a> </div>
+        <div class="menubutton" style="background-color:darkslategray"> <a href="index.html"> Índice</a>  </div>
+        <div class="menubutton"> <a href="stats.html"> Estadisticas</a>  </div>
+    </div>
+
+    <div class="main">
+        <div style="background-color:azure; padding: 15px; height: 100%">
+            <table id="tabla_oculta">
+                <tr>
+                    <th style="width:250px ; text-align:left" onclick="mostrarInfo('foto1')">Comuna: La Florida</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo('foto1')"> Calle: Av. Vicuña Maquena</th>
+                    <th style="width: 250px ;text-align:left" onclick="mostrarInfo('foto1')"> Tipo-Cantidad: Perros: 1, Gatos: 1</th>
+                    <th style="text-align:center">
+                        Foto <br>
+                        <img onclick="agrandarImagen1()" src="img/demo1.png" id="foto1" style="width:320px; height:240px; padding: 1px">
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr id="infoOculta" style="display: none;">
+                    <td style="background-color: azure; padding: 15px; height: 100%">
+                        Fecha de Ingreso: 1 de enero, 2020 <br>
+                        Nombre Contacto: Juan Perez <br>
+                        Total Mascotas: 2 <br>
+                        Total Fotos: 1 <br>
+                        <button style="text-align:right" onclick="ocultarInfo()">Cerrar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        
+       
+    </div>
+
+</body>
+</html>
