@@ -49,17 +49,15 @@ sort:
 	# y si p[0]>p[1], %eax debe ser >0
 	# No modifique %edi %ebp %esp.
 	# Puede usar el registros %ebx %ecx %edx %esi
-    # Ademas puede guardar resultados en -24(%ebp) ... -32(%ebp).
+        # Ademas puede guardar resultados en -24(%ebp) ... -32(%ebp).
 	# Restriccion: no puede llamar a otras funciones
 
-    # A Upper Case = 65
-    # a Lower Case = 97
-    # pasar de mayus a minus => x + 32 (x valor ascii del caracter)
-
-	movl 	4(%edi), %edx   # p[1] -> edx
-	movl 	0(%edi), %ecx	 # p[0] -> ecx
-
-
+                                #     if (strcmp(p[0], p[1])<=0)
+        pushl   4(%edi)         #     // push p[1] (2do. argumento)
+        pushl   0(%edi)         #     // push p[0] (1er. argumento)
+        call    strcmp
+        addl    $8, %esp        #     // desapila p[1] y p[0]
+	
 	#################################################
 	### Fin del codigo que Ud. debe modificar     ###
 	#################################################
@@ -96,4 +94,4 @@ sort:
 	popl	%esi
 	popl	%edi
 	popl	%ebp
-	ret			# 
+	ret			# }

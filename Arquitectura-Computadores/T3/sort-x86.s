@@ -42,6 +42,34 @@ sort:
 	### Comienza el codigo que Ud. debe modificar ###
 	#################################################
 
+    movl 4(%edi), %edx # p[1] -> edx
+    movl 0(%edi), %ecx # p[0] -> ecx
+
+    .trans1:
+        cmpb    $91, (%edx)
+        jl .mayus_minus1
+        jmp .trans2
+
+    .mayus_minus1:
+        addl    $32, (%edx)
+        jmp .trans2
+
+    .trans2:
+        cmpb    $91, (%ecx)
+        jl .mayus_minus2
+        jmp .comparacion
+
+    .mayus_minus2:
+        addl    $32, (%ecx)
+        addl    $1, %ecx
+        jmp .comparacion
+
+    .comparacion:
+        pushl    %edx
+        pushl    %ecx
+        call    strcmp
+        addl    $8, %esp
+
 	# %edi es la direccion de alguno de los strings del arreglo noms.
 	# Considere char *p= %edi, entonces compare los strings p[0] y p[1].
 	# Deje el resultado de la comparacion en %eax
@@ -49,15 +77,9 @@ sort:
 	# y si p[0]>p[1], %eax debe ser >0
 	# No modifique %edi %ebp %esp.
 	# Puede usar el registros %ebx %ecx %edx %esi
-        # Ademas puede guardar resultados en -24(%ebp) ... -32(%ebp).
+    # Ademas puede guardar resultados en -24(%ebp) ... -32(%ebp).
 	# Restriccion: no puede llamar a otras funciones
 
-                                #     if (strcmp(p[0], p[1])<=0)
-        pushl   4(%edi)         #     // push p[1] (2do. argumento)
-        pushl   0(%edi)         #     // push p[0] (1er. argumento)
-        call    strcmp          #     // %eax= strcmp(p[0], p[1])
-        addl    $8, %esp        #     // desapila p[1] y p[0]
-	
 	#################################################
 	### Fin del codigo que Ud. debe modificar     ###
 	#################################################
@@ -69,13 +91,14 @@ sort:
 
 	# En %eax debe quedar la conclusion de la comparacion:
 	# si %eax<=0 p[0] y p[1] estan en orden y no se intercambiaran.
-        # Si no, se intercambian p[0] y p[1] y se asigna p= noms para revisar
+    # Si no, se intercambian p[0] y p[1] y se asigna p= noms para revisar
 	# nuevamente que los elementos esten ordenados desde el comienzo
-        # del arreglo
+    # del arreglo
+
 .decision:
 	cmpl	$0, %eax
 	jg	.else		#     // if %eax>0 goto .else
-	addl	$4, %edi	#       p++; // en la siguiente interacion 
+	addl	$4, %edi	#       p++; // en la siguiente interacion
 	jmp	.while_cond	#            // se comparan p[1] y p[2]
 .else:				#     else {
                                 #       // intercambar p[0] y p[1], y reiniciar

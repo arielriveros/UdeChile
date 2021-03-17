@@ -46,3 +46,22 @@ void sort(char noms, int n) {
         }
     }
 }
+
+int main(){
+    char *noms[]= {"Gonzalez peDro",
+                   "pereZ juan" ,
+                   "gonzalez Diego",
+                   "gonzalez ana",
+                   "fernandez veri",
+                   "perez josefa",
+                   "fernandez monica",
+                   "perez alberto",
+                   "FERNANDEZ maria",
+                   "jerez tatiana",
+                   "PEREZ JOSE",
+                   "Gonzalez DIEGO"};
+    sort(noms, 12);
+    for (int i= 0; i<12; i++)
+        puts(noms[i]);
+    return 0;
+}

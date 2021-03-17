@@ -6,10 +6,18 @@ void sort(char *noms[], int n);
 
 // La estructura de una persona
 
-char *noms[]= {"Gonzalez peDro", "pereZ juan" , "gonzalez Diego",
-               "gonzalez ana", "fernandez veri", "perez josefa",
-               "fernandez monica", "perez alberto", "FERNANDEZ maria",
-               "jerez tatiana", "PEREZ JOSE", "Gonzalez DIEGO"};
+char *noms[]= {"Gonzalez peDro",
+               "pereZ juan" ,
+               "gonzalez Diego",
+               "gonzalez ana",
+               "fernandez veri",
+               "perez josefa",
+               "fernandez monica",
+               "perez alberto",
+               "FERNANDEZ maria",
+               "jerez tatiana",
+               "PEREZ JOSE",
+               "Gonzalez DIEGO"};
 
 int main() {
   sort(noms, 12);
