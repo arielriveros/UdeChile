@@ -28,8 +28,7 @@ bool condition(int m, bool cond_2)
     }
     return k <= counter;
 }
-int maigan()
-{
+int main(){
     std::cin >> n >> k;
     for (int i = 1; i <= n; i++){
         std::cin >> seq[i];
