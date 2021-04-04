@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./scripts.js"></script>
+    <title>Document</title>
+</head>
+<body>   
+    <div class="main-container">
+        
+        <!-- BEGIN HEADER -->
+        <div class="navbar">
+            <h2 id="inicio-title"> INICIO </h2>
+            <h2 hidden id="informar-title"> INFORMAR AVISTAMIENTO </h2>
+            <h2 hidden id="listado-title"> LISTA DE AVISTAMIENTOS </h2>
+            <h2 hidden id="stats-title"> ESTADÍSTICAS </h2>
+            <div>
+                <button class="menu-button" onclick="renderPage('inicio')" id="inicio-btn"> INICIO </button>
+                <button class="menu-button" onclick="renderPage('informar')" id="informar-btn"> INFORMAR </button>
+                <button class="menu-button" onclick="renderPage('listado')" id="listado-btn"> LISTADO </button>
+                <button class="menu-button" onclick="renderPage('stats')" id="stats-btn"> ESTADÍSTICAS </button>
+            </div>
+        </div>
+        <!-- END HEADER -->
+        <div class="content-container">
+            <!-- INICIO -->
+            <div hidden id="inicio">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quas adipisci autem consequatur sapiente aliquid reiciendis, itaque eos vero laborum. Quaerat dignissimos illum, inventore laboriosam suscipit eaque consequuntur modi placeat.
+                <table id="previews"></table>
+            </div>
+            <!-- INFORMAR -->
+            <div id="informar">
+                <form>
+                    <h3>Ingresar Datos</h3>
+                    <div>
+                        <ul>      
+                            <li>
+                                <label> Región<i class="req">*</i> </label>
+                                <select onchange="loadComunas(this); disableElementById(`disable-this`)" id="region" name="region" ></select>
+                                <label> Comuna<i class="req">*</i> </label>
+                                <select onchange="showElementById(`unhide-this`); disableElementById(`disable-this`)" id="comuna" name="comuna" ></select>
+                            </li>
+                            <li hidden id="unhide-this">
+                                <label> Sector </label>
+                                <textarea maxlength="200" rows="4" cols="40"> </textarea>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <label> Nombre<i class="req">*</i></label>
+                                <input type="text" maxlength="100" name="nombre" id="nombre">
+                            </li>
+                            <li>
+                                <label> Correo<i class="req">*</i> </label>
+                                <input type="email" maxlength="100" name="email" id="email">
+                                <label> Teléfono celular </label>
+                                <input type="tel" maxlength="100" name="celular" id="celular">
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <label> Hora y Fecha <i class="req">*</i></label>
+                                <input type="datetime-local" name="dia-hora-avistamiento" id="dia-hora-avistamiento">
+                                <label> Tipo <i class="req">*</i></label>
+                                <select name="tipo-avistamiento" id="tipo-avistamiento">
+                                    <option value=""> Seleccione</option>
+                                    <option> No sé </option>
+                                    <option> Insecto </option>
+                                    <option> Aráctnido </option>
+                                    <option> Miriápodo </option>
+                                </select>
+                                <label> Estado <i class="req">*</i></label>
+                                <select name="estado-avistamiento" id="estado-avistamiento">
+                                    <option value=""> Seleccione</option>
+                                    <option> No sé </option>
+                                    <option> Vivo </option>
+                                    <option> Muerto </option>
+                                </select>
+                            </li>
+                        </ul>
+                        <div class="form-last-row">
+                            <ul>
+                                <li><label> Fotografías<i class="req">*</i> <button type="button" onclick="addFileInput()"> Agregar </button> </label></li>
+                                <li><input type="file" name="foto-avistamiento"></li>
+                                <li id="foto-avistamiento-2" hidden><input type="file" name="foto-avistamiento" ></li>
+                                <li id="foto-avistamiento-3" hidden><input type="file" name="foto-avistamiento"></li>
+                                <li id="foto-avistamiento-4" hidden><input type="file" name="foto-avistamiento"></li>
+                                <li id="foto-avistamiento-5" hidden><input type="file" name="foto-avistamiento"></li>
+                            </ul>
+                            <div class="submit-container">
+                                <button class="menu-button" type="button" > NUEVO AVISTAMIENTO </button>
+                                <button class="menu-button" type="submit"> ENVIAR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="req">*</i> Campos obligatorios
+                </form>
+            </div>
+            <!-- LISTADO -->
+            <div hidden id="listado">
+                LISTADO NYI
+            </div>
+            <!-- ESTADISTICAS -->
+            <div hidden id="stats">
+                STATS NYI
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

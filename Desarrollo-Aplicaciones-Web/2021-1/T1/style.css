@@ -1,0 +1,143 @@
+:root{
+    --solid-color-1: rgb(169, 226, 84);
+    --solid-color-2: rgb(6, 129, 16);
+    --solid-color-3: rgb(31, 34, 1);
+    --btn-normal: rgb(86,146,147);
+    --btn-hover: rgb(40, 99, 98);
+    --btn-disabled: rgb(49, 49, 49, .4);
+    --background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5)), url(./media/landscape-background.jpg);
+    --background-1: linear-gradient(to right, rgba(255,255,255), var(--solid-color-1) 60%);
+    --background-2: linear-gradient(to right, rgba(255,255,255), var(--solid-color-2) 60%);
+    background: var(--background-image);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+[hidden] {
+    display: none !important;
+}
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.content-container{
+    margin: 15px;
+}
+/* Estilo Inicio */
+#inicio{
+    margin: 40px auto;
+    width: 65%;}
+#inicio table{
+    justify-content: space-between;
+    background-color:rgb(101, 148, 8, .8) ;
+    border-radius: 10px;
+    width: 100%;
+    border: solid 1px var(--solid-color-3);
+    margin: auto;
+    padding: 0;}
+#inicio thead td{
+    background: whitesmoke;
+    justify-content: space-between;
+    font-weight:bold;
+    margin-right: 0;
+    margin: auto;
+    padding: 2%;
+    width: max-content}
+#inicio tbody td{
+    justify-content: flex-end;
+    margin: auto;
+    padding: 1%;
+    width: max-content}
+#inicio img{
+    border-radius: 10px;
+    border: solid 1px var(--solid-color-3);
+    width: 150px;
+    transition: 500ms;}
+#inicio img:hover{
+    width: 300px;
+    transition: 1000ms;}
+
+/* Estilo Informar */
+#informar{
+    display: flex;
+    margin: auto;
+    width:100%;
+    align-content: center;
+    justify-content: center;}
+#informar form{
+    background: whitesmoke;
+    padding: 0 5%;
+    border-radius: 10px;}
+#informar textarea{
+    resize: none;
+    width: 70%;}
+#informar ul{
+    align-content: center;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 25px 25px 0 25px;}
+#informar li{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    margin: 0 20px 20px 0;
+    list-style-type:none;}
+#informar .form-last-row{
+    display:flex;
+    justify-content: space-between;
+    margin: 10px;}
+#informar .form-last-row li{
+    margin: 5px;
+} 
+#informar .submit-container{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin: auto 20px ;
+    width: 100%;;
+    padding:10px;
+}
+#nombre{
+    width: 80%;}
+#email{
+    width: 38%;}
+#region{
+    width:max-content;}
+#comuna{
+    width:150px;}
+#informar label{
+    margin-left:10px;
+    margin-right:10px;}
+#informar .req{
+    color:red;
+    font-weight: bolder;}
+
+ /* Estilo Barra de navegación */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 0 0 40px 40px;
+    padding: 10px 20px 10px 20px;
+    background: var(--background-1);
+    border-bottom: solid 2px var(--solid-color-3);}
+.menu-button{
+    color: white;
+    width: 120px; 
+    height: 40px;
+    border-radius: 10px;
+    border: solid 1px black;
+    outline:none;
+    background: var(--btn-normal);
+    transition: 300ms;}
+.menu-button:hover{
+    cursor: pointer;
+    background: var(--btn-hover);
+    transition: 300ms;}
+.menu-button:disabled{
+    cursor:auto;
+    color: var(--solid-color-1);
+    background: var(--btn-disabled);}
