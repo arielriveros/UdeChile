@@ -26,12 +26,12 @@ int main()
     begin = chrono::steady_clock::now();
     KMP(text, pattern);
     end = chrono::steady_clock::now();
-    cout << "KMP Time = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << " µs" << endl;
+    cout << "KMP Time = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << " microseconds" << endl;
     cout << endl << "Boyer-Moore Algorithm: " << endl;
     begin = chrono::steady_clock::now();
     BM(text, pattern);
     end = chrono::steady_clock::now();
-    cout << "BM Time = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << " µs" << endl;
-    
+    cout << "BM Time = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << " microseconds" << endl;
+    system("pause");
     return 0;
 }
