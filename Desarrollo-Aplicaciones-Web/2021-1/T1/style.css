@@ -1,13 +1,6 @@
+@import "variables.css";
+
 :root{
-    --solid-color-1: rgb(169, 226, 84);
-    --solid-color-2: rgb(6, 129, 16);
-    --solid-color-3: rgb(31, 34, 1);
-    --btn-normal: rgb(86,146,147);
-    --btn-hover: rgb(40, 99, 98);
-    --btn-disabled: rgb(49, 49, 49, .4);
-    --background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5)), url(./media/landscape-background.jpg);
-    --background-1: linear-gradient(to right, rgba(255,255,255), var(--solid-color-1) 60%);
-    --background-2: linear-gradient(to right, rgba(255,255,255), var(--solid-color-2) 60%);
     background: var(--background-image);
     background-repeat: no-repeat;
     background-size:cover;
@@ -26,31 +19,22 @@ body{
 }
 /* Estilo Inicio */
 #inicio{
+    display: flexbox;
     margin: 40px auto;
-    width: 65%;}
+    width: 60%;}
 #inicio table{
-    justify-content: space-between;
-    background-color:rgb(101, 148, 8, .8) ;
-    border-radius: 10px;
     width: 100%;
-    border: solid 1px var(--solid-color-3);
-    margin: auto;
-    padding: 0;}
-#inicio thead td{
-    background: whitesmoke;
-    justify-content: space-between;
-    font-weight:bold;
-    margin-right: 0;
-    margin: auto;
-    padding: 2%;
-    width: max-content}
-#inicio tbody td{
-    justify-content: flex-end;
-    margin: auto;
-    padding: 1%;
-    width: max-content}
+    padding: auto 10px;}
+#inicio .preview-capsule{
+    background-color:rgb(101, 148, 8, .8) ;
+    border: 1px solid  black;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+}
 #inicio img{
     border-radius: 10px;
+    margin: 0px;
     border: solid 1px var(--solid-color-3);
     width: 150px;
     transition: 500ms;}
@@ -84,11 +68,8 @@ body{
     width: 100%;
     margin: 0 20px 20px 0;
     list-style-type:none;}
-#informar .form-last-row{
-    display:flex;
-    justify-content: space-between;
-    margin: 10px;}
-#informar .form-last-row li{
+
+#informar .file-list{
     margin: 5px;
 } 
 #informar .submit-container{
@@ -99,13 +80,13 @@ body{
     width: 100%;;
     padding:10px;
 }
-#nombre{
+input[name="nombre"]{
     width: 80%;}
-#email{
+input[name="email"]{
     width: 38%;}
-#region{
+input[name="region"]{
     width:max-content;}
-#comuna{
+input[name="comuna"]{
     width:150px;}
 #informar label{
     margin-left:10px;

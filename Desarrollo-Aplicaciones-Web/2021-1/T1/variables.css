@@ -1,0 +1,11 @@
+html{
+    --solid-color-1: rgb(169, 226, 84);
+    --solid-color-2: rgb(6, 129, 16);
+    --solid-color-3: rgb(31, 34, 1);
+    --btn-normal: rgb(86,146,147);
+    --btn-hover: rgb(40, 99, 98);
+    --btn-disabled: rgb(49, 49, 49, .4);
+    --background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5)), url(./media/landscape-background.jpg);
+    --background-1: linear-gradient(to right, rgba(255,255,255), var(--solid-color-1) 60%);
+    --background-2: linear-gradient(to right, rgba(255,255,255), var(--solid-color-2) 60%);
+}
