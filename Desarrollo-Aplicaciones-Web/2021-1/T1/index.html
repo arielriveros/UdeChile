@@ -26,13 +26,12 @@
         <div class="content-container">
             <!-- INICIO -->
             <div hidden id="inicio">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quas adipisci autem consequatur sapiente aliquid reiciendis, itaque eos vero laborum. Quaerat dignissimos illum, inventore laboriosam suscipit eaque consequuntur modi placeat.
                 <div id="previews"></div>
             </div>
             <!-- INFORMAR -->
             <div id="informar">
                 <form>
-                    <h3>Ingresar Datos</h3> <button type="button" onclick="test()"> TEST </button>
+                    <h3>Ingresar Datos</h3>
                     <h4> Datos de contacto </h4>
                     <ul>
                         <li>
@@ -56,7 +55,20 @@
             </div>
             <!-- LISTADO -->
             <div hidden id="listado">
-                LISTADO NYI
+                <div id="details-container"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Fecha y Hora </th>
+                            <th> Comuna </th>
+                            <th> Sector </th>
+                            <th> Nombre de Contacto </th>
+                            <th> Total Avistamientos </th>
+                            <th> Total de Fotos </th>
+                        </tr>
+                    </thead>
+                        <tbody id="table-body"></tbody>
+                </table>
             </div>
             <!-- ESTADISTICAS -->
             <div hidden id="stats">
