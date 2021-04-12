@@ -19,13 +19,12 @@ body{
 }
 /* Estilo Inicio */
 #inicio {
-    display: flexbox;
     margin: 40px auto;
     width: 60%;}
 #inicio table{
     width: 100%;
-    padding: auto 10px;}
-#inicio .preview-capsule{
+    padding: 0 10px;}
+.preview-capsule{
     background-color:rgb(101, 148, 8, .8) ;
     border: 1px solid  var(--solid-color-3);
     margin: 10px auto;
@@ -91,9 +90,29 @@ input[name="comuna"]{
 #informar .req{
     color:red;
     font-weight: bolder;}
-
+#confirm-window{
+    background: var(--solid-color-1);
+    text-align: center;
+    position: absolute;
+    margin: 20%;
+    height: max-content;
+    width: 40%;
+    padding: 30px 0;
+    border: solid 2px var(--solid-color-2);
+    border-radius: var(--global-radius);
+}
+#confirm-window div{
+    display: flex; 
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+#confirm-window .menu-button{
+    color:white;
+    width: max-content;
+}
  /* Estilo Listado */
- #listado{
+#listado{
     display: flex;
     margin: auto;
     width:100%;
@@ -103,50 +122,66 @@ input[name="comuna"]{
     background: var(--solid-color-1);
     border: solid 1px var(--solid-color-3);
     padding: 20px;
-    border-radius: var(--global-radius);
-}
+    border-radius: var(--global-radius);}
 #listado td{
     border: solid 1px var(--solid-color-3);
     height: 40px;
     width: 100px;
     text-align: center;
-}
+    transition: var(--transitions-time);}
 #listado tbody tr:hover{
     cursor:pointer;
     color:white;
-    background: var(--solid-color-2);
-}
+    background: var(--solid-color-2);}
 #listado .details{
-    display: flexbox;
     background: var(--background-1);
-    color: var(--solid-color-3);
-    width: max-content;
+    color: white;
+    width: 350px;
     height: max-content;
     position: absolute;
     margin: 5%;
     border: solid 1px var(--solid-color-3);
     border-radius: var(--global-radius);
-    padding: 1%;
+    padding: 1%;}
+#listado #details-img{
+    position: absolute;
+    background: rgb(0, 0, 0, .8);
+    border-radius: var(--global-radius);
+    padding: 20px;
+    width: max-content;
+    height: max-content;
 }
 #listado img{
     border-radius: var(--global-radius);
     margin: 0px;
     border: solid 1px var(--solid-color-3);
-    width: 150px;
+    height: 240px;
+    width: 320px;
     transition: var(--transitions-time);}
+#listado img:hover{
+    cursor:pointer;}
+#details-img-photo img{
+    height: 600px;
+    width: 800px;}
+/* Estilo Estadisticas */    
+#stats{
+    margin: auto;
+    width:max-content;
+    align-content: center;
+    justify-content: center;}
 
- /* Estilo Barra de navegación */
+    /* Estilo Barra de navegación */
 .navbar{
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: 0px auto;
     align-items: center;
-    border-radius: 0 0 calc(var(--global-radius) * 4) calc(var(--global-radius) * 4);
+    border-radius: 0px 0px calc(4 * var(--global-radius)) calc(4 * var(--global-radius));
     padding: 10px 20px 10px 20px;
     background: var(--background-2);
     border-bottom: solid 2px var(--solid-color-3);}
 .menu-button{
-    color: white;
+    color: var(--solid-color-3);
     width: 120px; 
     height: 40px;
     border-radius: var(--global-radius);
@@ -155,6 +190,7 @@ input[name="comuna"]{
     background: var(--btn-normal);
     transition: var(--transitions-time);}
 .menu-button:hover{
+    color:white;
     cursor: pointer;
     background: var(--btn-hover);
     transition: var(--transitions-time);}

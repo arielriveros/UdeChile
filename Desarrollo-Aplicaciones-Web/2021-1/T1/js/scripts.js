@@ -1,3 +1,5 @@
+/* const d3 = require('https://unpkg.com/d3@6.2.0'); */
+
 // INICIO EMULACIÓN BACKEND
 var dataAvistamientos = [ 
     {nombre:"Ariel Riveros", email:"ariel@riveros.cl", celular:"+123456789", region:"Región Metropolitana de Santiago", comuna: "La Florida", sector:"Vicuña Mackenna", fecha:"2021-03-29 13:21 " , tipo: "Insecto", estado: "Vivo", fotos: ["./media/insecto1.png"]}, 
@@ -6,7 +8,7 @@ var dataAvistamientos = [
     {nombre:"Juana Pérez", email:"juana@perez.cl", celular:"+123456789", region:"Región Metropolitana de Santiago", comuna: "Maipú", sector:"Plaza de Maipú", fecha:"2021-01-16 00:09 ", tipo: "Miriápodo", estado: "Vivo", fotos: ["./media/miriapodo1.png"]}, 
     {nombre:"Juan Pérez", email:"juan@perez.cl", celular:"+987654321", region:"Región Metropolitana de Santiago", comuna: "Providencia", sector:"",  fecha:"2020-12-25 11:01 ", tipo: "Arácnido", estado: "No sé", fotos: ["./media/aracnido2.png"]},
     {nombre:"Ariel Riveros", email:"ariel@riveros.cl", celular:"+123456789", region:"Región Metropolitana de Santiago", comuna: "Vitacura", sector:"", fecha:"2020-10-11 18:35 ", tipo: "Insecto", estado: "Vivo", fotos: ["./media/insecto3.png", "./media/insecto4.png"]},
-    {nombre:"Ariel Riveros", email:"ariel@riveros.cl", celular:"+123456789", region:"Región Metropolitana de Santiago", comuna: "Las Condes", sector:"", fecha:"2020-06-23 13:47 ", tipo: "Miriápodo", estado: "No sé", fotos: ["./media/miriapodo2.png"]} 
+    {nombre:"Ariel Riveros", email:"ariel@riveros.cl", celular:"+123456789", region:"Región Metropolitana de Santiago", comuna: "Las Condes", sector:"", fecha:"2020-10-11 11:21 ", tipo: "Miriápodo", estado: "No sé", fotos: ["./media/miriapodo2.png"]} 
 ]
 
 var locationData = [ { region: "Región Metropolitana de Santiago", comunas: [ "Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "Santiago", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "Tiltil", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor" ] }, { region: "Tarapacá", comunas: [ "Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica" ] }, { region: "Antofagasta", comunas: [ "Antofagasta", "Mejillones", "Sierra Gorda", "Taltal", "Calama", "Ollagüe", "San Pedro de Atacama", "Tocopilla", "María Elena" ] }, { region: "Atacama", comunas: [ "Copiapó", "Caldera", "Tierra Amarilla", "Chañaral", "Diego de Almagro", "Vallenar", "Alto del Carmen", "Freirina", "Huasco" ] }, { region: "Coquimbo", comunas: [ "La Serena", "Coquimbo", "Andacollo", "La Higuera", "Paiguano", "Vicuña", "Illapel", "Canela", "Los Vilos", "Salamanca", "Ovalle", "Combarbalá", "Monte Patria", "Punitaqui", "Río Hurtado" ] }, { region: "Valparaíso", comunas: [ "Valparaíso", "Casablanca", "Concón", "Juan Fernández", "Puchuncaví", "Quintero", "Viña del Mar", "Isla de Pascua", "Los Andes", "Calle Larga", "Rinconada", "San Esteban", "La Ligua", "Cabildo", "Papudo", "Petorca", "Zapallar", "Quillota", "Calera", "Hijuelas", "La Cruz", "Nogales", "San Antonio", "Algarrobo", "Cartagena", "El Quisco", "El Tabo", "Santo Domingo", "San Felipe", "Catemu", "Llaillay", "Panquehue", "Putaendo", "Santa María", "Quilpué", "Limache", "Olmué", "Villa Alemana" ] }, { region: "Región del Libertador Gral. Bernardo O’Higgins", comunas: [ "Rancagua", "Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "Las Cabras", "Machalí", "Malloa", "San Francisco de Mostazal", "Olivar", "Peumo", "Pichidegua", "Quinta de Tilcoco", "Rengo", "Requínoa", "San Vicente de Tagua Tagua", "Pichilemu", "La Estrella", "Litueche", "Marchihue", "Navidad", "Paredones", "San Fernando", "Chépica", "Chimbarongo", "Lolol", "Nancagua", "Palmilla", "Peralillo", "Placilla", "Pumanque", "Santa Cruz" ] }, { region: "Región del Maule", comunas: [ "Talca", "Constitución", "Curepto", "Empedrado", "Maule", "Pelarco", "Pencahue", "Río Claro", "San Clemente", "San Rafael", "Cauquenes", "Chanco", "Pelluhue", "Curicó", "Hualañé", "Licantén", "Molina", "Rauco", "Romeral", "Sagrada Familia", "Teno", "Vichuquén", "Linares", "Colbún", "Longaví", "Parral", "Retiro", "San Javier de Loncomilla", "Villa Alegre", "Yerbas Buenas" ] }, { region: "Región del Biobío", comunas: [ "Concepción", "Coronel", "Chiguayante", "Florida", "Hualqui", "Lota", "Penco", "San Pedro de la Paz", "Santa Juana", "Talcahuano", "Tomé", "Hualpén", "Lebu", "Arauco", "Cañete", "Contulmo", "Curanilahue", "Los Álamos", "Tirúa", "Los Ángeles", "Antuco", "Cabrero", "Laja", "Mulchén", "Nacimiento", "Negrete", "Quilaco", "Quilleco", "San Rosendo", "Santa Bárbara", "Tucapel", "Yumbel", "Alto Biobío" ] }, { region: "Región de la Araucanía", comunas: [ "Temuco", "Carahue", "Cunco", "Curarrehue", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Saavedra", "Teodoro Schmidt", "Toltén", "Vilcún", "Villarrica", "Cholchol", "Angol", "Collipulli", "Curacautín", "Ercilla", "Lonquimay", "Los Sauces", "Lumaco", "Purén", "Renaico", "Traiguén", "Victoria" ] }, { region: "Región de Los Ríos", comunas: [ "Valdivia", "Corral", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "La Unión", "Futrono", "Lago Ranco", "Río Bueno" ] }, { region: "Región de Los Lagos", comunas: [ "Puerto Montt", "Calbuco", "Cochamó", "Fresia", "Frutillar", "Los Muermos", "Llanquihue", "Maullín", "Puerto Varas", "Castro", "Ancud", "Chonchi", "Curaco de Vélez", "Dalcahue", "Puqueldón", "Queilén", "Quellón", "Quemchi", "Quinchao", "Osorno", "Puerto Octay", "Purranque", "Puyehue", "Río Negro", "San Juan de la Costa", "San Pablo", "Chaitén", "Futaleufú", "Hualaihué", "Palena" ] }, { region: "Región Aisén del Gral. Carlos Ibáñez del Campo", comunas: [ "Coihaique", "Lago Verde", "Aisén", "Cisnes", "Guaitecas", "Cochrane", "O’Higgins", "Tortel", "Chile Chico", "Río Ibáñez" ] }, { region: "Región de Magallanes y de la Antártica Chilena", comunas: [ "Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "Antártica", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine" ] }, { region: "Arica y Parinacota", comunas: ["Arica", "Camarones", "Putre", "General Lagos"] }, { region: "Región de Ñuble", comunas: [ "Cobquecura", "Coelemu", "Ninhue", "Portezuelo", "Quirihue", "Ránquil", "Treguaco", "Bulnes", "Chillán Viejo", "Chillán", "El Carmen", "Pemuco", "Pinto", "Quillón", "San Ignacio", "Yungay", "Coihueco", "Ñiquén", "San Carlos", "San Fabián", "San Nicolás" ] } ];
@@ -24,7 +26,7 @@ function numeroAvistamientos(datos, nombreContacto){
 }
 // FIN EMULACIÓN BACKEND
 
-// FUNCIONES VARIAS
+// FUNCIONES AUXILIARES
 var numFormularios = 0;
 function showElementById(id,show){
     if (document.getElementById(id)){
@@ -49,7 +51,7 @@ function test(){
     `
     for(var i = 0; i < numFormularios ; i++){
         var x = "";
-        var fotos = document.getElementsByName(`foto-avistamiento-${i}`);
+        var fotos = document.getElementsByName(`foto-avistamiento`);
         fotos.forEach(elem => x += `${elem.value}; `)
         str += `\n ---------------------
     Avistamiento ${i}
@@ -69,7 +71,15 @@ function showDetailsById(id, show){
     }
     if(show) showElementById(id,true);
 }
-// FIN FUNCIONES VARIAS
+function enlargeImg(src,enlarge){
+    showElementById('details-img',enlarge)
+    document.getElementById('details-img-photo').innerHTML = 
+    !enlarge ? '' :
+    `
+    <img src=${src}>
+    `
+}
+// FIN FUNCIONES AUXILIARES
 
 function renderPage(page){
     const sections = ["inicio", "informar", "listado","stats"];
@@ -139,7 +149,7 @@ function loadComunas(selectedRegion, ID){
 }
 function addFileInput(ID){
     var fileInputs = document.getElementById(`file-list-${ID}`)
-    var newFileInput = `<li class="file-list"><input type="file" name="foto-avistamiento-${ID}"></li>`
+    var newFileInput = `<li class="file-list"><input type="file" class="foto-avistamiento-${ID}" name="foto-avistamiento"></li>`
     if (fileInputs.childElementCount <= 5) fileInputs.insertAdjacentHTML("beforeend",newFileInput);
 }
 function insertForm(){
@@ -185,7 +195,7 @@ function insertForm(){
                 </ul>          
                 <ul id="file-list-${ID}">
                     <li><label> Fotografías<i class="req">*</i> <button type="button" onclick="addFileInput(${ID})"> Agregar </button> </label></li>
-                    <li class="file-list"><input type="file" name="foto-avistamiento-${ID}"></li>
+                    <li class="file-list"><input type="file" class="foto-avistamiento-${ID}" name="foto-avistamiento"></li>
                 </ul>
             </div>                
         </div>
@@ -204,9 +214,15 @@ function validateForm(send){
     var email = document.getElementsByName("email")[0].value;
     const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const numberRegex = /^\+[0-9]+$/;
+    const dateRegex = /^[0-9]+-(0?[1-9]|[12][0-9]|3[01])-[0-9]+T[0-9]+:[0-9]+$/;
     var celular = document.getElementsByName("celular")[0].value;
     var regiones = document.getElementsByName("region");
     var comunas = document.getElementsByName("comuna");
+    var sectores = document.getElementsByName("sector");
+    var fechas = document.getElementsByName("dia-hora-avistamiento");
+    var tipos = document.getElementsByName("tipo-avistamiento");
+    var estados = document.getElementsByName("estado-avistamiento");
+    
     if(nombre === ""){
         message += "Nombre vacío\n";
     }
@@ -235,14 +251,53 @@ function validateForm(send){
         if(comunas[i].value === ""){
             message += `Comuna vacía en avistamiento ${i+1}\n`
         }
+        if(sectores[i].value.length >= 100){
+            message += `Sector muy largo en avistamiento ${i+1}\n`
+        }
+        if(fechas[i].value === ""){
+            message += `Fecha vacía en avistamiento ${i+1}\n`
+        }
+        else if (!dateRegex.test(fechas[i].value)){
+            message += `Formato de fecha incorrecta en avistamiento ${i+1}\n`
+        }
+        if(tipos[i].value === ""){
+            message += `Tipo vacío en avistamiento ${i+1}\n`
+        }
+        if(estados[i].value === ""){
+            message += `Estado vacío en avistamiento ${i+1}\n`
+        }
+        var fotos = document.getElementsByClassName(`foto-avistamiento-${i}`)[0];
+        if(fotos.value === ""){
+            message += `Ingresar al menos una foto en avistamiento ${i+1}\n`
+        }
     }
 
     if(message!== ""){
         alert(message)
     }
     else{
-        send ? document.getElementsByTagName("form")[0].submit() : insertForm() ;
+        send ? showElementById("confirm-window",true) : insertForm() ;
     }
+}
+function backAfterSubmit(){
+    document.getElementById('confirm-window').innerHTML =  `¿Está seguro que desea enviar esta información?
+    <div>
+        <button type="button" class="menu-button" onclick="submitHandler()">
+            Sí, estoy total y absolutamente seguro
+        </button>
+        <button type="button" class="menu-button" onclick="showElementById('confirm-window',false)">
+            No estoy seguro, quiero volver al formulario
+        </button></div>`;
+        showElementById('confirm-window',false);
+        renderPage('inicio');
+}
+function submitHandler(){
+    document.getElementById("confirm-window").innerHTML = `
+        Hemos recibido su información, muchas gracias por colaborar
+        <div> <button type="button" onclick="backAfterSubmit()" class="menu-button"> Volver a inicio </button> </div>
+    `
+    /* SUBMIT NO HACE NADA */
+    return false;
 }
 function loadListado(datos){
     var listadoElement = document.getElementById("table-body");
@@ -252,13 +307,17 @@ function loadListado(datos){
     var fotos = "";
     const loadFotos = (listaDeFotos) => {
         listaDeFotos.forEach(elem => {
-            fotos += `<img src="${elem}">`
+            fotos += `<img onclick="enlargeImg('${elem}',true)" src="${elem}">`
         })
     }
     for (var i = 0; i < datos.length; i++){
         loadFotos(datos[i].fotos)
         details += `<div hidden class="details" id="details-${i}">
+                    <div style="display:flex; justify-content:space-between ">
                     <h3>Detalles</h3>
+                    <button class="menu-button" onclick="renderPage('inicio')" id="inicio-btn"> Volver a inicio </button>
+                    <button class="menu-button" onclick="showDetailsById('details-${i}',false)"> Cerrar </button>
+                    </div>
                     Nombre: ${datos[i].nombre}
                     <br>
                     Correo: ${datos[i].email}
@@ -277,9 +336,7 @@ function loadListado(datos){
                     Estado: ${datos[i].estado}
                     <br>
                     Fotos: 
-                    <div style="display:flexbox; width: 200px;"> ${fotos} </div>
-                    <br><br>
-                    <button onclick="showDetailsById('details-${i}',false)"> Cerrar </button>
+                    <div style="display:flexbox; width: 200px;"> ${fotos} </div>                    
                     </div>
         `
         tbody += `
@@ -301,7 +358,7 @@ function loadListado(datos){
 }
 
 window.onload = () => {
-    renderPage("listado");
+    renderPage("inicio");
     insertForm();
     loadPreview(dataAvistamientos);
     loadListado(dataAvistamientos)

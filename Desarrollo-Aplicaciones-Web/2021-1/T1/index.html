@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css">
-    <script src="./scripts.js"></script>
+    <script src="./js/scripts.js"></script>
     <title>Document</title>
 </head>
 <body>   
@@ -24,13 +24,24 @@
         </div>
         <!-- END HEADER -->
         <div class="content-container">
-            <!-- INICIO -->
-            <div hidden id="inicio">
-                <div id="previews"></div>
-            </div>
-            <!-- INFORMAR -->
-            <div id="informar">
-                <form>
+        <!-- INICIO -->
+        <div hidden id="inicio">
+            <div id="previews"></div>
+        </div>
+        <!-- INFORMAR -->
+        <div id="informar">
+                <form id="form" > 
+                    <div hidden id="confirm-window">
+                        ¿Está seguro que desea enviar esta información?
+                        <div>
+                            <button type="button" class="menu-button" onclick="submitHandler()">
+                                Sí, estoy total y absolutamente seguro
+                            </button>
+                            <button type="button" class="menu-button" onclick="showElementById('confirm-window',false)">
+                                No estoy seguro, quiero volver al formulario
+                            </button>
+                        </div>                    
+                    </div>
                     <h3>Ingresar Datos</h3>
                     <h4> Datos de contacto </h4>
                     <ul>
@@ -52,10 +63,14 @@
                         <button class="menu-button" type="button" onclick="validateForm(true)" > ENVIAR</button>
                     </div>
                 </form>
-            </div>
-            <!-- LISTADO -->
-            <div hidden id="listado">
+        </div>
+        <!-- LISTADO -->
+        <div hidden id="listado">
                 <div id="details-container"></div>
+                <div hidden id="details-img">
+                    <button onclick='enlargeImg("",false)'> Cerrar </button>
+                    <div id="details-img-photo"></div>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -69,11 +84,20 @@
                     </thead>
                         <tbody id="table-body"></tbody>
                 </table>
+        </div>
+        <!-- ESTADISTICAS -->
+        <div hidden id="stats">
+            <div class="preview-capsule">
+                <img style="height:400px ;width: 600px;" src="./media/placeholder1.png" alt="grafico de linea">
             </div>
-            <!-- ESTADISTICAS -->
-            <div hidden id="stats">
-                STATS NYI
+            <div class="preview-capsule">
+                <img style="height:400px ;width: 600px;" src="./media/placeholder2.png" alt="grafico de torta">
             </div>
+            <div class="preview-capsule">
+                <img style="height:400px ;width: 600px;" src="./media/placeholder3.png" alt="grafico de barras">
+            </div>
+            <button class="menu-button" onclick="renderPage('inicio')"> Volver al inicio </button>
+        </div>
         </div>
     </div>
 </body>
