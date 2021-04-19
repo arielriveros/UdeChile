@@ -1,0 +1,5 @@
+Observación General:
+P1: req. funcionales
+P2: req. no funcionales
+Mensaje Personal:
+RF: 0.5, 0.25,0.5,0.25, 0 . RNF: 0.75, 0.75, 0.75. RF1: foro para todos los usuarios(u-chile?) y nada más?(-0.25) . RF2: No es testeable, debe ser mas específico y son dos aspectos en uno (-0.5), RF3: UN usuario podrá acceder a un calendario con las actividades semanales que le correspondan ... No es testeable y requiere mas información (-0.25), RF4: ¿Qué roles? se mencionan dos temas en uno(-0.5), RF5: No es funcional.

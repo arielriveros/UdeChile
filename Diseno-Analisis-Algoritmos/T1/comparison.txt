@@ -1,0 +1,15 @@
+a.txt  | "aAa" |   "a"   |  "A"
+KMP    |  0    |   993   |   0
+BP     | 1003  |    0    |   0
+
+dna.txt  | "a"   | "gataca" | "agacctgtacgggtagtgaggttctttgtttgcacggtaat"
+KMP      | 3017  |   3009   |     43143
+BP       | 4073  |   3011   |     24080
+
+letters.txt  | "a" |    "1"   | "12345"	| "xyz" | "IIpiCaIjfsupTnuqpRrsvLfpVZTWDDFcfAi"
+KMP          |  0  |   2017   |  2006	|  1014 |			0
+BP           |  0  |   8027   |  1003   |  2006 |		       1004
+
+numbers.txt  |  "a"  | "1"  | "123456789" | "abcjklxyz" | "11414213221541423123415"
+KMP          | 5017  |  0   |   10034     |  5026	|	    1003
+BP           | 16050 |  0   |   3010      |  2008	|	      0
