@@ -1,46 +1,41 @@
 #include <nSystem.h>
+#include <fifoqueues.h>
 #include "pub.h"
-
-// DAMA==1 y VARON==0
-
-nSem m; // = nMakeSem(1); para la exclusion mutua
-
-// En q_sem[DAMA] esperan las damas, en q_sem[VARON] esperan los varones
-nSem q_sem[2]; // = nMakeSem(0) x 2;
-int esperan[2]= {0, 0}; // personas esperando de cada sexo
-int adentro[2]= {0, 0}; // personas dentro del baño de cada sexo
-
+nSem mutex;
+int esperan[2]= {0, 0};
+int adentro[2]= {0, 0};
+FifoQueue colas[2];
 void ini_pub() {
-  m= nMakeSem(1);
-  q_sem[0]= nMakeSem(0);
-  q_sem[1]= nMakeSem(0);
+  mutex = nMakeSem(1);
+  colas[0] = MakeFifoQueue();
+  colas[1] = MakeFifoQueue();
 }
-
 void entrar(int sexo) {
-  int opuesto= !sexo; // Si entra DAMA, opuesto es VARON
-  nWaitSem(m);
+  int opuesto = !sexo;
+  nWaitSem(mutex);
   if (adentro[opuesto] || esperan[opuesto]!=0) {
-    // Se espera si el banno esta ocupado por personas del sexo opuesto o
-    // si hay personas esperando del sexo opuesto
-    esperan[sexo]++;
-    nSignalSem(m);
-    nWaitSem(q_sem[sexo]); // Se coloca al thread en espera
-    nWaitSem(m);
+    //esperan[sexo]++;
+    nSignalSem(mutex); 
+    nSem n = nMakeSem(0); 
+    PutObj(colas[sexo], n); 
+    nWaitSem(n);
+    nDestroySem(n);
+  }else{
+    adentro[sexo]++;
+    nSignalSem(mutex);
   }
-  adentro[sexo]++;
-  nSignalSem(m);
 }
-
 void salir(int sexo) {
   int opuesto= !sexo;
-  nWaitSem(m);
+  nWaitSem(mutex);
   adentro[sexo]--;
-  if (adentro[sexo]==0) {
-    for (int i= 0; i<esperan[opuesto]; i++) {
-      nSignalSem(q_sem[opuesto]);
+  if (adentro[sexo]==0){
+    while(!EmptyFifoQueue(colas[opuesto])){
+      nSignalSem(PeekObj(colas[opuesto]));
+      DeleteObj(colas[opuesto], PeekObj(colas[opuesto]));
+      adentro[opuesto]++;
     }
-    esperan[opuesto]= 0;
   }
-  nSignalSem(m);
+  esperan[opuesto]= 0;
+  nSignalSem(mutex);
 }
-

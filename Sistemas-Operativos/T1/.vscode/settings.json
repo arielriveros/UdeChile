@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "nsystem.h": "c",
+        "pub.h": "c",
+        "fifoqueues.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

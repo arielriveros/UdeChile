@@ -1,4 +1,3 @@
-
 #define VARON 0
 #define DAMA  1
 
