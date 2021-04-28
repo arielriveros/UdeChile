@@ -5,7 +5,7 @@ import cgi
 import cgitb
 cgitb.enable()
 utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
-print("Content-type:text/html\r\n\r\n")
+print("Content-type: text/html\r\n\r\n")
 # END METADATA
 
 html_head = " <html><body><h3> Los datos fueron enviados correctamente </h3> "    

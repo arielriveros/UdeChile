@@ -1,0 +1,5 @@
+    db         user     password
+
+cc500209_db cc500209_u usvestibul
+
+>>> mysql cc500209_db -u cc500209_u -pusvestibul
