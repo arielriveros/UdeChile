@@ -206,6 +206,7 @@ modules.xml
 # Sonarlint plugin
 
 ### VisualStudioCode ###
+*/.vscode
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
