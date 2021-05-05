@@ -1,5 +1,5 @@
 # jsockets para Python3
-# sería bonito tener soporte para multicast
+# seria bonito tener soporte para multicast
 import socket
 import sys
 

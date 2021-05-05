@@ -1,0 +1,5 @@
+::::: EN LOCAL ::::::
+client_echo @ localhost:3327
+                       : proxy1 => localhost:3328
+                                            : proxy2 => localhost:1818
+                                                                 : server_echo @localhost:1818

@@ -4,17 +4,17 @@ import jsockets
 import sys
 
 if len(sys.argv) != 3:
-    print('Use: '+sys.argv[0]+' host port')
+    print('[CLIENT] Use: '+sys.argv[0]+' host port')
     sys.exit(1)
 
 s = jsockets.socket_tcp_connect(sys.argv[1], sys.argv[2])
 if s is None:
-    print('could not open socket')
+    print('[CLIENT] could not open socket')
     sys.exit(1)
 
 for line in sys.stdin:
     s.send(line.encode())
     data=s.recv(1500).decode()
-    print(data, end = '')
+    print('[CLIENT] ',data, end = '')
 
 s.close()

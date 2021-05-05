@@ -9,27 +9,27 @@ def childdeath(signum, frame):
   os.waitpid(-1, os.WNOHANG)
 
 def server(conn):
-    print('Cliente conectado')
+    print('[SERVER] Cliente conectado')
     while True:
         data = conn.recv(1500)
         if not data: break
+        print('[SERVER] ',data)
         conn.send(data)
     conn.close()
-    print('Cliente desconectado')
-    sys.exit(0)
-    
+    print('[SERVER] Cliente desconectado')
+    sys.exit(0)   
 
 signal.signal(signal.SIGCHLD, childdeath)
 s = jsockets.socket_tcp_bind(1818)
 if s is None:
-    print('could not open socket')
+    print('[SERVER] could not open socket')
     sys.exit(1)
 while True:
-    conn, addr = s.accept();
+    conn, addr = s.accept()
     pid = os.fork()
     if pid == 0:
         s.close()
         server(conn)
         sys.exit(0)
     else:
-        conn.close();
+        conn.close()
