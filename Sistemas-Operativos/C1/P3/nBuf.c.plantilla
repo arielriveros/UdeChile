@@ -1,0 +1,36 @@
+#include <nSystem.h>
+#include <nSysimp.h>
+#include <fifoqueues.h>
+
+// nSystem.h ya incluye los encabezados de las funciones pedidas
+// nSysimp.h ya incluye los estados WAIT_GET y WAIT_PUT
+// No necesita modificar ningun archivo del nSystem original
+
+struct buffer {
+  ... defina aca la representacion de un nano buffer ...
+};
+
+nBuffer nMakeBuffer(int size) {
+  ...
+  return ...;
+}
+
+void nDestroyBuffer(nBuffer buf) {
+  // No se invoca en el test de prueba
+  // Puede dejarlo asi como esta
+}
+
+void *nGet(nBuffer buf) {
+  ...
+  return ...;
+}
+
+// Se puede hacer una solucion que deposite el item en el arreglo del buffer
+// aun cuando hay consumidores esperando.  En ese caso tenga cuidado de que
+// el consumidor que esta en primer lugar en la cola sea el que se
+// queda con la CPU.
+// De esa forma se asegura que sea ese consumidor el que extraera el item y
+// respetara el orden de llegada.
+void nPut(nBuffer buf, void *ptr) {
+  ...
+}
