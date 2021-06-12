@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<title>Hackbox</title>
+
+<!-- comentarios -->
+<style>
+  /* comentario */
+  body {
+    font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    margin: 0;
+  }
+
+  .titulo {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 5%;
+  }
+
+  .negrita {
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 600px) {
+    .negrita {
+      font-size: 15px;
+    }
+  }
+
+  #main {
+    background-color: #d2d2d2;
+    width: 50%;
+    margin-left: 25%;
+    padding: 25px;
+    margin-top: 5%;
+    border-radius: 15px;
+    box-shadow: #00000012 0 0 5px 6px;
+  }
+
+  .leyenda {
+    width: 20%;
+    display: inline;
+    margin-right: 10px;
+  }
+
+  input {
+    padding: 5px;
+    width: 30%;
+  }
+
+  .entrada {
+    margin-bottom: 5px;
+  }
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+<div class="titulo negrita ">Hackbox epic - Auxiliar 8</div>
+
+
+<div id="main">
+
+  <form method="post" action="hackbox">
+
+    <div class="entrada">
+
+      <div class="leyenda">Nombre</div>
+
+      <input required="required" type="text" size="10" id="nombre" name="nombre" placeholder="Escriba su nombre aqui" maxlength="100">
+
+    </div>
+
+    <div class="entrada">
+
+      <div class="leyenda">Contraseña</div>
+
+      <input type="text" name="apellido">
+
+    </div>
+
+
+    <div class="entrada">
+
+      <div class="leyenda">Escoga su frase favorita</div>
+
+      <select name="epic">
+        <option>Epic</option>
+        <option>Wena</option>
+      </select>
+
+    </div>
+
+    <div class="boton">
+      <button type="submit">Enviar formulario</button>
+    </div>
+  </form>
+
+</div>
+
+</body>
+
+
+</html>

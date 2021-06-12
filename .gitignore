@@ -9,6 +9,11 @@
 *.pdf
 *.doc
 *.docx
+*.txt
+*.zip
+*.rar
+
+./Ciencia-y-Religion/
 
 # User-specific stuff
 .idea/**/workspace.xml

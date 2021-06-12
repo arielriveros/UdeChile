@@ -24,6 +24,8 @@ struct Task { // Descriptor de una tarea
   struct Queue *send_queue; // cola de emisores en espera de esta tarea
   union { void *msg; int rc; } send; // sirve para intercambio de info
   int wake_time;            // Tiempo maximo de espera de un nReceive
+
+  int side;
 };
 
 #define NOVOID_NTASK
@@ -35,8 +37,7 @@ struct Task { // Descriptor de una tarea
 #define WAIT_TASK  2  // espera el final de otra tarea (nWaitTask)
 #define WAIT_REPLY 3  // hizo nSend y espera nReply (nSend)
 #define WAIT_SEND  4  // hizo nReceive y espera nSend (nReceive)
-#define WAIT_SEND_TIMEOUT 5
-                      // hizo nReceive y espera nSend o timeout (nReceive)
+#define WAIT_SEND_TIMEOUT 5 // hizo nReceive y espera nSend o timeout (nReceive)
 #define WAIT_READ  6  // esta bloqueada en un read (nRead)
 #define WAIT_WRITE 7  // esta bloqueada en un write (nWrite)
 #define WAIT_SEM   8  // esta bloqueada en un semaforo (nWaitSem)
@@ -49,10 +50,13 @@ struct Task { // Descriptor de una tarea
 
 // Agregar nuevos estados como STATUS_END+1, STATUS_END+2, ...
 
+#define WAIT_HALF 13
+#define WAIT_FULL 14
+
 #define STATUS_LIST {"READY", "ZOMBIE", "WAIT_TASK", "WAIT_REPLY", \
                      "WAIT_SEND", "WAIT_SEND_TIMEOUT", "WAIT_READ", \
                      "WAIT_WRITE", "WAIT_SEM", "WAIT_MON", "WAIT_COND", \
-                     "WAIT_COND_TIMEOUT", "WAIT_SLEEP" }
+                     "WAIT_COND_TIMEOUT", "WAIT_SLEEP", "WAIT_HALF", "WAIT_FULL" }
 
 /*
  * Prologo y Epilogo:

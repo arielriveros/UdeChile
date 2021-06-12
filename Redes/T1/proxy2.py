@@ -14,7 +14,7 @@ def UDP_rdr(conn2, conn, data):
 
     while True:
         if data:
-            print('[PROXY2] UDP_rdr Recibi:')
+            print('UDP_rdr Recibi:')
             print(data)
             # Acabo de leer una serie de bytes desde UDP
             try:
@@ -36,14 +36,14 @@ def TCP_rdr(conn, conn2):
             data=bytearray(conn.recv(MAX_DATA))
         except:
             data=None
-        print('[PROXY2] TCP_rdr Recibi:')
+        print('TCP_rdr Recibi:')
         print(data)
         # Acabo de leer una serie de bytes desde TCP
         if not data:
             break
         conn2.send(data)
 
-    print('[PROXY2] TCP_rdr Exit()')
+    print('TCP_rdr Exit()')
     conn.close()
 
 # Este el servidor de un socket ya conectado
@@ -52,27 +52,27 @@ def proxy(conn, addr, data, host, portout):
 
     conn2 = jsockets.socket_tcp_connect(host, portout)
     if conn2 is None:
-        print('[PROXY2] conexion rechazada por '+host+', '+portout)
+        print('conexión rechazada por '+host+', '+portout)
         sys.exit(1)
 
     conn.connect(addr)
-    # timeout de 100s, para que muera sin trafico
+    # timeout de 100s, para que muera sin tráfico
     conn.setsockopt(socket.SOL_SOCKET, socket.SO_RCVTIMEO, struct.pack("LL",100,0))
-    print('[PROXY2] Nueva conexion UDP')
+    print('Nueva conexión UDP')
 
     # inicializar el mundo
     newthread1 = threading.Thread(target=UDP_rdr, daemon=True, args=(conn, conn2, data))
     newthread1.start()
     TCP_rdr(conn2, conn)
-    print('[PROXY2] TCP rdr retorna, esperando UDP_rdr...')
+    print('TCP rdr retorna, esperando UDP_rdr...')
     newthread1.join()
     conn2.close()
-    print('[PROXY2] Cliente desconectado')
+    print('Cliente desconectado')
 
 
 # Main
 if len(sys.argv) != 4:
-    print('[PROXY2] Use: '+sys.argv[0]+' port-in host port-out')
+    print('Use: '+sys.argv[0]+' port-in host port-out')
     sys.exit(1)
 
 udpportin = sys.argv[1]
@@ -81,7 +81,7 @@ portout = sys.argv[3]
 
 s = jsockets.socket_udp_bind(udpportin)
 if s is None:
-    print('[PROXY2] bind failed')
+    print('bind falló')
     sys.exit(1)
 
 while True:
@@ -89,7 +89,7 @@ while True:
     if not data: break
     conn = jsockets.socket_udp_bind(udpportin)
     if conn is None:
-        print('[PROXY2] 2nd socket failed')
+        print('2nd socket failed')
         sys.exit(1)
 
     pid = os.fork()

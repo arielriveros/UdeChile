@@ -7,24 +7,24 @@ A and B corresponding X, Y and D.
 #include <iostream>
 using namespace std;
 
-int a, b, d, x, y;
-void euclid(int A, int B) {
-    if(B == 0) {
-        d = A;
+int a, b, x, y, gcd;
+void euclid(int in_a, int in_b) {
+    if(in_b == 0) {
+        gcd = in_a;
         x = 1;
         y = 0;
     }
     else {
-        euclid(B, A%B);
-        int temp = x;
+        euclid(in_b, in_a%in_b);
+        int aux = x;
         x = y;
-        y = temp - (A/B)*y;
+        y = aux - (in_a/in_b)*y;
     }
 }
 
 int main() {
     cin >> a >> b;
     euclid(a, b);
-    cout << x << " " << y << " " << d << endl;
+    cout << x << " " << y << " " << gcd << endl;
     return 0;   
 }

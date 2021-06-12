@@ -10,50 +10,40 @@ number of questions he should ask to make a guaranteed guess of Vasya's number, 
 
  */
 
-#include<bits/stdc++.h>
-#define MAX 1e3+1
+#include <iostream>
 
 using namespace std;
-int n, vis[1001];
-queue<long>q;
-bool check(long y, long p)
-{
-	while(y%p==0)
-	{
-		y/=p;
-	}
-	if(y==1)
-	return true;
-	else
-	return false; 
+const int bound = 1e6+1;
+int n, sum[1001];
+long outputArr[bound];
+
+int prime(long x, long y){
+	while(x%y==0) x = x/y;
+	if(x==1) return 1;
+	else return 0; 
 }
-int main()
-{
+int main(){
 	cin>>n;
+	int k = 0;
 	long long s=0;
-	for(int i=2;i<=n;i++)
-	{
-		if(vis[i]==0)
-		{
-			s++;
-			q.push(i);
-			for(int j=2;j*i<=n;j++)
-			{
-				if(check(j,i))
-				{
-					s++;
-					q.push(j*i);
+	int i = 2;
+	while(i<=n){
+		if(sum[i]==0){
+			outputArr[k] = i;
+			k++; s++;
+			for(int j=2;j*i<=n;j++){
+				if(prime(j,i)){
+					outputArr[k] = i*j;
+					s++; k++;
 				}
-				vis[j*i]=1;
+				sum[j*i]=1;
 			}
 		}
+		i++;
 	}
 	cout << s << endl;
-	while(!q.empty())
-	{
-		long long x=q.front();
-		cout<<x<<" ";
-		q.pop();
+	for(int i = 0;i < k; i++){
+		cout << outputArr[i] << " ";
 	}
 	cout << endl;
 }
