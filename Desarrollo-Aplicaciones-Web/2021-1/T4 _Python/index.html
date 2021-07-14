@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./js/scripts.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    
+    <title>Document</title>
+</head>
+<body>   
+    <div class="main-container">
+        
+        <!-- BEGIN HEADER -->
+        <div class="navbar">
+            <h2 id="inicio-title"> INICIO </h2>
+            <h2 id="informar-title"> INFORMAR AVISTAMIENTO </h2>
+            <h2 id="listado-title"> LISTA DE AVISTAMIENTOS </h2>
+            <h2 id="stats-title"> ESTADÍSTICAS </h2>
+            <div>
+                <button class="menu-button" onclick="renderPage('inicio')" id="inicio-btn"> INICIO </button>
+                <button class="menu-button" onclick="renderPage('informar')" id="informar-btn"> INFORMAR </button>
+                <button class="menu-button" onclick="renderPage('listado')" id="listado-btn"> LISTADO </button>
+                <button class="menu-button" onclick="renderPage('stats')" id="stats-btn"> ESTADÍSTICAS </button>
+            </div>
+        </div>
+        <!-- END HEADER -->
+        <div class="content-container">
+        <!-- INICIO -->
+        <div hidden id="inicio">
+            <div id="map-container"></div>
+            <div id="previews"></div>
+        </div>
+        <!-- INFORMAR -->
+        <div id="informar">
+                <form id="form" method="post" action="cgi-bin/submit_handler.py" enctype='multipart/form-data'> 
+                    <div hidden id="confirm-window">
+                        ¿Está seguro que desea enviar esta información?
+                        <div>
+                            <button type="submit" class="menu-button">
+                                Sí, estoy total y absolutamente seguro
+                            </button>
+                            <button type="button" class="menu-button" onclick="showElementById('confirm-window',false)">
+                                No estoy seguro, quiero volver al formulario
+                            </button>
+                        </div>                    
+                    </div>
+                    <h3>Ingresar Datos</h3>
+                    <h4> Datos de contacto </h4>
+                    <ul>
+                        <li>
+                            <label> Nombre<i class="req">*</i></label>
+                            <input type="text" maxlength="100" name="nombre" id="nombre-${ID}">
+                        </li>
+                        <li>
+                            <label> Correo<i class="req">*</i> </label>
+                            <input type="email" maxlength="100" name="email" id="email-${ID}">
+                            <label> Teléfono celular </label>
+                            <input type="tel" maxlength="100" name="celular" id="celular-${ID}">
+                        </li>
+                    </ul>
+                    <div id="informar-form"></div>
+                    <div class="submit-container">                
+                        <div><i class="req">*</i> Campos obligatorios</div>
+                        <button class="menu-button" type="button" onclick="validateForm(false)"> NUEVO AVISTAMIENTO </button>
+                        <button class="menu-button" type="button" onclick="validateForm(true)" > ENVIAR</button>
+                    </div>
+                </form>
+        </div>
+        <!-- LISTADO -->
+        <div hidden id="listado">
+                <div id="details-container"></div>
+                <div hidden id="details-img">
+                    <button onclick='enlargeImg("",false)'> Cerrar </button>
+                    <div id="details-img-photo"></div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th />
+                            <th><button onclick="pageListado(0)" style="justify-content: center; width:100%"> <- </button></th>
+                            <th />
+                            <th />
+                            <th><button onclick="pageListado(1)" style="justify-content: center; width:100%"> -> </button></th>
+                            <th />
+                        </tr>
+                        <tr>
+                            <th> Fecha y Hora </th>
+                            <th> Comuna </th>
+                            <th> Sector </th>
+                            <th> Nombre de Contacto </th>
+                            <th> Total Avistamientos </th>
+                            <th> Total de Fotos </th>
+                        </tr>
+                    </thead>
+                        <tbody id="table-body"></tbody>
+                </table>
+        </div>
+        <!-- ESTADISTICAS -->
+        <div hidden id="stats">
+            <div class="preview-capsule" id="grafico-avistamientos-dia"></div>
+            <div class="preview-capsule" id="grafico-avistamientos-tipo"></div>
+            <div class="preview-capsule" id="grafico-estados-mes"></div>
+            <button class="menu-button" onclick="renderPage('inicio')"> Volver al inicio </button>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

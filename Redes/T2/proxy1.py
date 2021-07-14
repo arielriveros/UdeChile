@@ -3,46 +3,60 @@ import sys
 import socket, jsockets
 import threading
 import struct, time
-import socket
+import queue as q
 
 MAX_DATA = 1500
 TCP_alive = 0
+loss = 10
 
 def addHeader(tipo, identificador,data='', secuencia = 0):
-    return (tipo+str(identificador)+str(identificador)+data).encode()
+    return (tipo+str(identificador)+str(secuencia)+data).encode()
 
 def findFirstNone(lista):
     for i in range(len(lista)):
-        if(lista[i]==None):
+        if(lista[i][0]==None):
             return i
-
-lossRate = 10
-clientes=[None for i in range(10)]
+#            conn   buffer   [recv,send]
+clientes = [[None, q.Queue, [0,1]] for i in range(10)]
 
 def UDP_rdr(conn_proxy2):
     global TCP_alive
     global clientes
     while True:
         try:
-            data = jsockets.recv_loss(conn_proxy2,lossRate,MAX_DATA).decode()
+            data = jsockets.recv_loss(conn_proxy2,50,MAX_DATA).decode()
         except:
             data=None
         if data:
             print('UDP_rdr Recibi:')
             print(data)
-            jsockets.send_loss(clientes[int(data[1])],lossRate,data[2:].encode())
+            tipo = data[0]
+            identificador = int(data[1])
+            ackBit = int(data[2])
+            if tipo == 'A': # Acknowledged
+                clientes[identificador][1].put(data)
+            elif tipo == 'D':
+                sendAck = addHeader('A', identificador, '', ackBit)
+                jsockets.send_loss(conn_proxy2, loss, sendAck)
+                if ackBit != clientes[identificador][2][1]:
+                    jsockets.send_loss(clientes[int(data[1])],loss,data[3:].encode())
+                    clientes[identificador][2][1] = ackBit
 
 def TCP_rdr(conn, identificador, conn_proxy2):
     global TCP_alive
     TCP_alive += 1
     first_time = True
+    msgs = q.Queue()
     while True:
-        try:
-            data=(conn.recv(MAX_DATA)).decode()
-        except:
-            data=None
-        print('TCP_rdr Recibi:')
-        print(data)
+        if msgs.empty():
+            try:
+                data=(conn.recv(MAX_DATA)).decode()
+            except:
+                data=None
+            print('TCP_rdr Recibi:')
+            print(data)
+        else:
+            data = msgs.pop(0)
         if first_time:
             first_time = False
             time.sleep(0.01)
@@ -54,7 +68,21 @@ def TCP_rdr(conn, identificador, conn_proxy2):
                 print('Cliente desconectado')
                 break
             else:
-                conn_proxy2.send(addHeader("D",identificador,data))
+                ack =  False
+                while not ack:
+                    ackBit = clientes[identificador][2][0]
+                    conn_proxy2.send(addHeader("D",identificador,data,ackBit))
+                    try:
+                        msgs.put(conn.recv(MAX_DATA).decode())
+                    except: pass
+                    try:
+                        clientes[identificador][1].get(True,7)
+                        ack = True
+                        if ackBit == 0:
+                            clientes[identificador][2][0] = 1
+                        else:
+                            clientes[identificador][2][0] = 0
+                    except: continue
                 continue
     conn.close()
     clientes[identificador]=None
@@ -92,5 +120,5 @@ conn_proxy2.setsockopt(socket.SOL_SOCKET, socket.SO_RCVTIMEO, struct.pack("LL",1
 while True:
     print('Aceptando cliente')
     index = findFirstNone(clientes)
-    clientes[index], addr = socket_tcp.accept()
-    proxy(clientes[index], index, conn_proxy2)
+    clientes[index][0], addr = socket_tcp.accept()
+    proxy(clientes[index][0], index, conn_proxy2)
